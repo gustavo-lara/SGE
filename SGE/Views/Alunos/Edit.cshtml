@@ -15,7 +15,6 @@
         <div class="col-md-4 text-center">2
             <div class="alert alert-danger">
                 <strong> @ViewData["Erro"] </strong>
-
             </div>
         </div>
     </div>
@@ -25,9 +24,15 @@
     <div class="col-md-4">
         @if (ViewData["Imagem"] != null)
         {
-            <img src="data:image/png;base64,@ViewData["Imagem"]" alt="Foto do Perfil" />
+            <img src="data:image/png;base64,@ViewData["Imagem"]" alt="Foto do Perfil" height="100" width="100"/>
         }
-        <form asp-action="Edit">
+        <button class="btn btn-outline-secondary" id="alterarFoto">
+            Alterar foto de Perfil
+        </button>
+        <form asp-action="AlterarFoto" id="formFoto" asp-route-id="@Model.AlunoId" method="post" enctype="multipart/form-data">
+        <input type="file" name="novaFoto" id="novaFoto" class="d-none form-control"  />    
+        </form>
+        <form asp-action="Edit" asp-route-id="@Model.AlunoId">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AlunoId" />
             <div class="form-group">
@@ -77,27 +82,26 @@
             </div>
             <div class="form-group">
                 <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
+                <input asp-for="Senha" value="@Model.Senha" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label for="ConfirmeSenha" class="control-label">Confirme a Senha</label>
-                <input id="ConfirmeSenha" name="ConfirmeSenha" class="form-control" />
+                <input id="ConfirmeSenha" value="@Model.Senha" name="ConfirmeSenha" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento" class="form-control" />
+                <input asp-for="DataNascimento"type="date" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            <div class="form-group form-switch">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="CadAtivo" /> @Html.DisplayNameFor(model => model.CadAtivo)
+                    <input class="form-check-input" type="checkbox" asp-for="CadAtivo" value="@Model.CadAtivo" /> @Html.DisplayNameFor(model => model.CadAtivo)
                 </label>
             </div>
             <div class="form-group">
                 <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" />
-                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+                <input asp-for="DataCadastro" class="form-control" readonly/>
             </div>
             <div class="form-group">
                 <label asp-for="CadInativo" class="control-label"></label>
@@ -105,14 +109,10 @@
                 <span asp-validation-for="CadInativo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoUsuarioId" class="control-label"></label>
-                <select asp-for="TipoUsuarioId" class="form-control" asp-items="ViewBag.TipoUsuarioId"></select>
-                <span asp-validation-for="TipoUsuarioId" class="text-danger"></span>
+                <input asp-for="TipoUsuarioId" class="form-control" value="@Model.TipoUsuarioId" type="hidden" />
             </div>
             <div class="form-group">
-                <label asp-for="UrlFoto" class="control-label"></label>
-                <input asp-for="UrlFoto" class="form-control" />
-                <span asp-validation-for="UrlFoto" class="text-danger"></span>
+                <input asp-for="UrlFoto" value="@Model.UrlFoto" type="hidden" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -124,6 +124,15 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    document.getElementById("alterarFoto").addEventListener("click", function () {
+        document.getElementById("novaFoto").classList.remove("d-none");
+    });
+    document.getElementById("novaFoto").addEventListener("change", function () {
+        document.getElementById("formFoto").submit()
+    });
+</script>
 
 @section Scripts {
     @{

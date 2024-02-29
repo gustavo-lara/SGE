@@ -30,8 +30,8 @@ namespace SGE.Migrations
 
                     b.Property<string>("AlunoNome")
                         .IsRequired()
-                        .HasMaxLength(130)
-                        .HasColumnType("nvarchar(130)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("CEP")
                         .IsRequired()
@@ -81,7 +81,7 @@ namespace SGE.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TipoUsuarioId")
+                    b.Property<Guid?>("TipoUsuarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UrlFoto")
@@ -345,9 +345,7 @@ namespace SGE.Migrations
                 {
                     b.HasOne("SGE.Models.TipoUsuario", "TipoUsuario")
                         .WithMany("Alunos")
-                        .HasForeignKey("TipoUsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TipoUsuarioId");
 
                     b.Navigation("TipoUsuario");
                 });

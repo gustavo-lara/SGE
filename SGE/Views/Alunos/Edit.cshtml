@@ -12,7 +12,7 @@
 @if (ViewData["Erro"] != null)
 {
     <div class="row">
-        <div class="col-md-4 text-center">2
+        <div class="col-md-4 text-center">
             <div class="alert alert-danger">
                 <strong> @ViewData["Erro"] </strong>
             </div>
@@ -24,14 +24,22 @@
     <div class="col-md-4">
         @if (ViewData["Imagem"] != null)
         {
-            <img src="data:image/png;base64,@ViewData["Imagem"]" alt="Foto do Perfil" height="100" width="100"/>
+            <img src="data:image/png;base64,@ViewData["Imagem"]"
+                 alt="Foto do Perfil" height="100" />
         }
+
         <button class="btn btn-outline-secondary" id="alterarFoto">
-            Alterar foto de Perfil
+            Alterar Foto do Perfil
         </button>
-        <form asp-action="AlterarFoto" id="formFoto" asp-route-id="@Model.AlunoId" method="post" enctype="multipart/form-data">
-        <input type="file" name="novaFoto" id="novaFoto" class="d-none form-control"  />    
+
+        <form asp-action="AlterarFoto" id="formFoto"
+              asp-route-id="@Model.AlunoId" method="post"
+              enctype="multipart/form-data">
+            <input type="file" name="novaFoto" id="novaFoto"
+                   class="d-none form-control" />
         </form>
+
+
         <form asp-action="Edit" asp-route-id="@Model.AlunoId">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AlunoId" />
@@ -91,17 +99,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento"type="date" class="form-control" />
+                <input asp-for="DataNascimento" type="date" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
-            <div class="form-group form-switch">
+            <div class="form-group form-switch mt-3">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" asp-for="CadAtivo" value="@Model.CadAtivo" /> @Html.DisplayNameFor(model => model.CadAtivo)
+                    <input class="form-check-input" type="checkbox" asp-for="CadAtivo" /> @Html.DisplayNameFor(model => model.CadAtivo)
                 </label>
             </div>
             <div class="form-group">
                 <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" readonly/>
+                <input asp-for="DataCadastro" class="form-control" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="CadInativo" class="control-label"></label>
@@ -109,8 +117,10 @@
                 <span asp-validation-for="CadInativo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="TipoUsuarioId" class="form-control" value="@Model.TipoUsuarioId" type="hidden" />
+                <input asp-for="TipoUsuarioId" class="form-control"
+                       value="@Model.TipoUsuarioId" type="hidden" />
             </div>
+
             <div class="form-group">
                 <input asp-for="UrlFoto" value="@Model.UrlFoto" type="hidden" class="form-control" />
             </div>
@@ -129,10 +139,12 @@
     document.getElementById("alterarFoto").addEventListener("click", function () {
         document.getElementById("novaFoto").classList.remove("d-none");
     });
+
     document.getElementById("novaFoto").addEventListener("change", function () {
-        document.getElementById("formFoto").submit()
+        document.getElementById("formFoto").submit();
     });
 </script>
+
 
 @section Scripts {
     @{

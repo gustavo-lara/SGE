@@ -94,7 +94,8 @@ namespace SGE.Controllers
                     return RedirectToAction("AcessoNegado", "Home");
                 }
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
+                                               .FirstOrDefault().TipoUsuarioId;
             ViewData["TipoUsuarioId"] = idTipo;
             return View();
         }
@@ -104,7 +105,10 @@ namespace SGE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlunoId,Matricula,AlunoNome,Email,Celular,Logradouro,Numero,Cidade,Estado,CEP,Senha,DataNascimento,CadAtivo,DataCadastro,CadInativo,TipoUsuarioId,UrlFoto")] Aluno aluno, string ConfirmeSenha, IFormFile UrlFoto)
+        public async Task<IActionResult> Create(
+            [Bind("AlunoId,Matricula,AlunoNome,Email,Celular,Logradouro,Numero,Cidade," +
+            "Estado,CEP,Senha,DataNascimento,CadAtivo,DataCadastro,CadInativo,TipoUsuario,TipoUsuarioId," +
+            "UrlFoto")] Aluno aluno, string ConfirmeSenha, IFormFile UrlFoto)
         {
 
             if (ModelState.IsValid)
@@ -137,9 +141,12 @@ namespace SGE.Controllers
                     }
                     aluno.UrlFoto = newFileName; // Atualiza o campo UrlFoto com o novo nome do arquivo
                 }
+
                 aluno.CadAtivo = true;
                 aluno.DataCadastro = DateTime.Now;
-                TipoUsuario tipoUsuario = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault();
+                TipoUsuario tipoUsuario = _context.TiposUsuario
+                    .Where(a => a.Tipo == "Aluno")
+                    .FirstOrDefault();
                 aluno.TipoUsuarioId = tipoUsuario.TipoUsuarioId;
                 aluno.TipoUsuario = tipoUsuario;
 
@@ -159,7 +166,8 @@ namespace SGE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
+                                               .FirstOrDefault().TipoUsuarioId;
             ViewData["TipoUsuarioId"] = idTipo;
             return View(aluno);
         }
@@ -351,29 +359,35 @@ namespace SGE.Controllers
             {
                 return NotFound();
             }
+
             Aluno aluno = await _context.Alunos.FindAsync(id);
             if (novaFoto != null && novaFoto.Length > 0)
             {
-                var fileName = aluno.AlunoId.ToString(); //Gera um novo nome para a imagem
-                var fileExtension = Path.GetExtension(novaFoto.FileName); //Pega a extensão do arquivo
-                var newFileName = fileName + fileExtension; //Novo nome do arquivo 
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data\\Content\\Photo", newFileName); //Caminho do Arquivo
+                var fileName = aluno.AlunoId.ToString(); // Gera um novo nome para a imagem
+                var fileExtension = Path.GetExtension(novaFoto.FileName); // Pega a extensão do arquivo
+                var newFileName = fileName + fileExtension; // Novo nome do arquivo
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                                            "Data\\Content\\Photo", newFileName); // Caminho do arquivo
+
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    await novaFoto.CopyToAsync(fileStream); //Salva a imagem no caminho especificado 
+                    await novaFoto.CopyToAsync(fileStream); // Salva a imagem no caminho especificado
                 }
-                aluno.UrlFoto = newFileName; //Atualiza o campo UrlFoto com o novo nome do arquivo
-                _context.Alunos.Update(aluno); //Atualiza o aluno nobanco de dados
-                await _context.SaveChangesAsync(); //Salva as alterações no banco de dados
+                aluno.UrlFoto = newFileName; // Atualiza o campo UrlFoto com o novo nome do arquivo
+                _context.Alunos.Update(aluno); // Atualiza o aluno no banco de dados
+                await _context.SaveChangesAsync(); // Salva as alterações no banco de dados
 
-                //Exibe a nova imagem na View
-                var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath); // Carrega a imagem 
+                /** Exibe a nova imagem na view **/
+                var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath); // Carrega a imagem em memória
                 var imageBase64 = Convert.ToBase64String(imageBytes); // Converte a imagem para Base64
-                ViewData["Imagem"] = imageBase64; // Exibe a imagem na View
+                ViewData["Imagem"] = imageBase64; // Exibe a imagem na view
+
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId; // Busca o id do tipo de usuário
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
+                                               .FirstOrDefault().TipoUsuarioId;
+            // Busca o id do tipo de usuário
             ViewData["TipoUsuarioId"] = idTipo; // Exibe o id do tipo de usuário na view
-            return View("Edit", aluno); //Retorna a view de edição (Edit.cshtml) do aluno
+            return View("Edit", aluno); // Retorna a view de edição (Edit.cshtml) do aluno
         }
     }
 }

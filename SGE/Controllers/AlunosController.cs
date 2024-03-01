@@ -94,8 +94,7 @@ namespace SGE.Controllers
                     return RedirectToAction("AcessoNegado", "Home");
                 }
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
-                                               .FirstOrDefault().TipoUsuarioId;
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
             ViewData["TipoUsuarioId"] = idTipo;
             return View();
         }
@@ -144,9 +143,7 @@ namespace SGE.Controllers
 
                 aluno.CadAtivo = true;
                 aluno.DataCadastro = DateTime.Now;
-                TipoUsuario tipoUsuario = _context.TiposUsuario
-                    .Where(a => a.Tipo == "Aluno")
-                    .FirstOrDefault();
+                TipoUsuario tipoUsuario = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault();
                 aluno.TipoUsuarioId = tipoUsuario.TipoUsuarioId;
                 aluno.TipoUsuario = tipoUsuario;
 
@@ -166,8 +163,7 @@ namespace SGE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
-                                               .FirstOrDefault().TipoUsuarioId;
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
             ViewData["TipoUsuarioId"] = idTipo;
             return View(aluno);
         }
@@ -366,8 +362,7 @@ namespace SGE.Controllers
                 var fileName = aluno.AlunoId.ToString(); // Gera um novo nome para a imagem
                 var fileExtension = Path.GetExtension(novaFoto.FileName); // Pega a extensão do arquivo
                 var newFileName = fileName + fileExtension; // Novo nome do arquivo
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                                            "Data\\Content\\Photo", newFileName); // Caminho do arquivo
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(),"Data\\Content\\Photo", newFileName); // Caminho do arquivo
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
@@ -383,8 +378,7 @@ namespace SGE.Controllers
                 ViewData["Imagem"] = imageBase64; // Exibe a imagem na view
 
             }
-            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno")
-                                               .FirstOrDefault().TipoUsuarioId;
+            Guid idTipo = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
             // Busca o id do tipo de usuário
             ViewData["TipoUsuarioId"] = idTipo; // Exibe o id do tipo de usuário na view
             return View("Edit", aluno); // Retorna a view de edição (Edit.cshtml) do aluno

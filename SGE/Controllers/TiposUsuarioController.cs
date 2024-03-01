@@ -56,7 +56,7 @@ namespace SGE.Controllers
                 {
                     return RedirectToAction("AcessoNegado", "Home");
                 }
-            }
+            }            
 
             if (id == null)
             {
@@ -94,6 +94,8 @@ namespace SGE.Controllers
             return View();
         }
 
+        
+
         // POST: TiposUsuario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -110,6 +112,8 @@ namespace SGE.Controllers
             }
             return View(tipoUsuario);
         }
+    
+
 
         // GET: TiposUsuario/Edit/5
         public async Task<IActionResult> Edit(Guid? id)

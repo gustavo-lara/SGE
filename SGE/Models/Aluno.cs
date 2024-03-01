@@ -22,14 +22,26 @@ namespace SGE.Models
         [Required(ErrorMessage = "O campo Email é obrigatório")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
-
+        [Display(Name = "Celular")]
         [Required(ErrorMessage = "O campo Celular é obrigatório")]
         public string Celular { get; set; }
+        [Display(Name = "Logradouro")]
+        [Required(ErrorMessage = "O campo Logradouro é obrigatório")]
         public string Logradouro { get; set; }
+        [Display(Name = "Numero")]
+        [Required(ErrorMessage = "O campo Numero é obrigatório")]
         public string Numero { get; set; }
+        [Display(Name = "Cidade")]
+        [Required(ErrorMessage = "O campo Cidade é obrigatório")]
         public string Cidade { get; set; }
+        [Display(Name = "Estado")]
+        [Required(ErrorMessage = "O campo Estado é obrigatório")]
         public string Estado { get; set; }
+        [Display(Name = "CEP")]
+        [Required(ErrorMessage = "O campo CEP é obrigatório")]
         public string CEP { get; set; }
+        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "O campo Senha é obrigatório")]
         public string Senha { get; set; }
 
         [DataType(DataType.Date)]

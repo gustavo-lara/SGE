@@ -218,7 +218,7 @@ namespace SGE.Controllers
                 }
                 else
                 {
-                    aluno.CadAtivo = true;
+                    aluno.CadAtivo = false;
                     usuario.CadInativo = null;
                     aluno.CadInativo = null;
                 }

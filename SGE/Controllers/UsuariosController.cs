@@ -109,7 +109,7 @@ namespace SGE.Controllers
             if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
             {
                 ModelState.AddModelError("Email", "Este e-mail já está cadastrado.");
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return View(usuario);
             }
             if (ModelState.IsValid)
@@ -119,7 +119,7 @@ namespace SGE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 
@@ -152,7 +152,7 @@ namespace SGE.Controllers
                 return NotFound();
             }
 
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 

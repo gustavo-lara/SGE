@@ -232,6 +232,7 @@ namespace SGE.Controllers
 
             Ocorrencia.CadInativo = DateTime.Now;
             Ocorrencia.CadAtivo = false;
+            Ocorrencia.Finalizado = true;
             _context.Update(Ocorrencia);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

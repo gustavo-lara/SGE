@@ -11,54 +11,93 @@
 </head>
 <body class="bg-white">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mx-5">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PINTO LARGO 2</a>
+                <a class="navbar-brand fw-bolder" style="color:#2E75D3; font-size: 25px" asp-area="" asp-controller="Home" asp-action="Index">AppEscola</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="d-flex justify-content-center navbar-nav flex-grow-1" style="font-size:19px; gap:2em;">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" style="color:#2E75D3; font-weight:400" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuários</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TiposUsuario" asp-action="Index">Tipos de Usuários</a>
+                            <a class="nav-link" style="color:#2E75D3; font-weight:400" asp-area="" asp-controller="Alunos" asp-action="Index">Alunos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuários</a>
+                            <a class="nav-link" style="color:#2E75D3; font-weight:400" asp-area="" asp-controller="Turmas" asp-action="Index">Turmas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Alunos" asp-action="Index">Alunos</a>
+                            <a class="nav-link" style="color:#2E75D3; font-weight:400" asp-area="" asp-controller="ReservasSala" asp-action="Reservas">Reservas de Sala</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Turmas" asp-action="Index">Turmas</a>
+                            <a class="nav-link" style="color:#2E75D3; font-weight:400" asp-area="" asp-controller="Ocorrencias" asp-action="ListaOcorrencias">Boletim de Ocorrências</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="TiposUsuario" asp-action="Index">Tipos de Usuários</a>
+                        </li> *@
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="AlunosTurma" asp-action="ListaAlunos">Alunos por Turma</a>
                         </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ReservasSala" asp-action="Reservas">Reservas de Sala</a>
-                        </li>
-                        <li class="nav-item">
+                        </li>*@
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TiposOcorrencia" asp-action="Index">Tipos de Ocorrência</a>
-                        </li>
-                   
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Ocorrencias" asp-action="ListaOcorrencias">Boletim de Ocorrências</a>
-                        </li>
+                        </li>  *@
 
                     </ul>
                 </div>
                 @if (Context.Session.GetString("usuario") != null)
                 {
-                    <div class="d-flex justify-content-end">
-                        <a class="btn btn-outline-light text-dark" asp-area="" asp-controller="Usuarios" asp-action="SelecionaTipo" asp-route-id="@Context.Session.GetString("usuarioId")">Olá, @Context.Session.GetString("usuario") </a>
-                        <a class="btn btn-outline-light text-dark" asp-area="" asp-controller="Home" asp-action="Logout"> Logout</a>
+                    <div class="d-flex justify-content-end gap-3">
+                        <div style="color:#2E75D3; border: 1.5px solid #2E75D3;display:flex; justify-content:center; align-items:center; border-radius: 5px; height:35px; width:90px; box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);">
+                            <a style="text-decoration:none;" asp-area="" asp-controller="Usuarios" asp-action="SelecionaTipo" asp-route-id="@Context.Session.GetString("usuarioId")">
+                                <svg width="108" height="45" viewBox="0 0 108 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g filter="url(#filter0_d_44_10)">
+                                        <rect x="4.5" y="2.5" width="99" height="36" rx="4.5" fill="white" stroke="#2E75D3" />
+                                        <path d="M45.6667 31C45.6667 31 44 31 44 29.3333C44 27.6667 45.6667 22.6667 54 22.6667C62.3333 22.6667 64 27.6667 64 29.3333C64 31 62.3333 31 62.3333 31H45.6667ZM54 21C55.3261 21 56.5979 20.4732 57.5355 19.5355C58.4732 18.5979 59 17.3261 59 16C59 14.6739 58.4732 13.4021 57.5355 12.4645C56.5979 11.5268 55.3261 11 54 11C52.6739 11 51.4021 11.5268 50.4645 12.4645C49.5268 13.4021 49 14.6739 49 16C49 17.3261 49.5268 18.5979 50.4645 19.5355C51.4021 20.4732 52.6739 21 54 21Z" fill="#2E75D3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_44_10" x="0" y="0" width="108" height="45" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="2" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_44_10" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_44_10" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </a>
+                        </div>
+                        <div style="color:#2E75D3; border: 1.5px solid #2E75D3;display:flex; justify-content:center; align-items:center; border-radius: 5px; height:35px; width:90px; box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);">
+                            <a style="text-decoration:none; font-weight:500;" asp-area="" asp-controller="Home" asp-action="Logout">
+                                <svg width="109" height="45" viewBox="0 0 109 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g filter="url(#filter0_d_37_39)">
+                                        <rect x="5.45557" y="2.5" width="99" height="36" rx="4.5" fill="white" stroke="#2E75D3" />
+                                        <path d="M44.2676 25.18C43.4276 25.18 42.6226 25.07 41.8526 24.85C41.0826 24.62 40.4626 24.325 39.9926 23.965L40.8176 22.135C41.2676 22.455 41.7976 22.72 42.4076 22.93C43.0276 23.13 43.6526 23.23 44.2826 23.23C44.7626 23.23 45.1476 23.185 45.4376 23.095C45.7376 22.995 45.9576 22.86 46.0976 22.69C46.2376 22.52 46.3076 22.325 46.3076 22.105C46.3076 21.825 46.1976 21.605 45.9776 21.445C45.7576 21.275 45.4676 21.14 45.1076 21.04C44.7476 20.93 44.3476 20.83 43.9076 20.74C43.4776 20.64 43.0426 20.52 42.6026 20.38C42.1726 20.24 41.7776 20.06 41.4176 19.84C41.0576 19.62 40.7626 19.33 40.5326 18.97C40.3126 18.61 40.2026 18.15 40.2026 17.59C40.2026 16.99 40.3626 16.445 40.6826 15.955C41.0126 15.455 41.5026 15.06 42.1526 14.77C42.8126 14.47 43.6376 14.32 44.6276 14.32C45.2876 14.32 45.9376 14.4 46.5776 14.56C47.2176 14.71 47.7826 14.94 48.2726 15.25L47.5226 17.095C47.0326 16.815 46.5426 16.61 46.0526 16.48C45.5626 16.34 45.0826 16.27 44.6126 16.27C44.1426 16.27 43.7576 16.325 43.4576 16.435C43.1576 16.545 42.9426 16.69 42.8126 16.87C42.6826 17.04 42.6176 17.24 42.6176 17.47C42.6176 17.74 42.7276 17.96 42.9476 18.13C43.1676 18.29 43.4576 18.42 43.8176 18.52C44.1776 18.62 44.5726 18.72 45.0026 18.82C45.4426 18.92 45.8776 19.035 46.3076 19.165C46.7476 19.295 47.1476 19.47 47.5076 19.69C47.8676 19.91 48.1576 20.2 48.3776 20.56C48.6076 20.92 48.7226 21.375 48.7226 21.925C48.7226 22.515 48.5576 23.055 48.2276 23.545C47.8976 24.035 47.4026 24.43 46.7426 24.73C46.0926 25.03 45.2676 25.18 44.2676 25.18ZM55.168 25V23.425L55.018 23.08V20.26C55.018 19.76 54.863 19.37 54.553 19.09C54.253 18.81 53.788 18.67 53.158 18.67C52.728 18.67 52.303 18.74 51.883 18.88C51.473 19.01 51.123 19.19 50.833 19.42L49.993 17.785C50.433 17.475 50.963 17.235 51.583 17.065C52.203 16.895 52.833 16.81 53.473 16.81C54.703 16.81 55.658 17.1 56.338 17.68C57.018 18.26 57.358 19.165 57.358 20.395V25H55.168ZM52.708 25.12C52.078 25.12 51.538 25.015 51.088 24.805C50.638 24.585 50.293 24.29 50.053 23.92C49.813 23.55 49.693 23.135 49.693 22.675C49.693 22.195 49.808 21.775 50.038 21.415C50.278 21.055 50.653 20.775 51.163 20.575C51.673 20.365 52.338 20.26 53.158 20.26H55.303V21.625H53.413C52.863 21.625 52.483 21.715 52.273 21.895C52.073 22.075 51.973 22.3 51.973 22.57C51.973 22.87 52.088 23.11 52.318 23.29C52.558 23.46 52.883 23.545 53.293 23.545C53.683 23.545 54.033 23.455 54.343 23.275C54.653 23.085 54.878 22.81 55.018 22.45L55.378 23.53C55.208 24.05 54.898 24.445 54.448 24.715C53.998 24.985 53.418 25.12 52.708 25.12ZM59.4759 25V16.93H61.8159V25H59.4759ZM60.6459 15.805C60.2159 15.805 59.8659 15.68 59.5959 15.43C59.3259 15.18 59.1909 14.87 59.1909 14.5C59.1909 14.13 59.3259 13.82 59.5959 13.57C59.8659 13.32 60.2159 13.195 60.6459 13.195C61.0759 13.195 61.4259 13.315 61.6959 13.555C61.9659 13.785 62.1009 14.085 62.1009 14.455C62.1009 14.845 61.9659 15.17 61.6959 15.43C61.4359 15.68 61.0859 15.805 60.6459 15.805ZM63.9876 25V16.93H66.2226V19.21L65.9076 18.55C66.1476 17.98 66.5326 17.55 67.0626 17.26C67.5926 16.96 68.2376 16.81 68.9976 16.81V18.97C68.8976 18.96 68.8076 18.955 68.7276 18.955C68.6476 18.945 68.5626 18.94 68.4726 18.94C67.8326 18.94 67.3126 19.125 66.9126 19.495C66.5226 19.855 66.3276 20.42 66.3276 21.19V25H63.9876Z" fill="#2E75D3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_37_39" x="0.955566" y="0" width="108" height="45" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="2" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_37_39" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_37_39" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 }
             </div>
@@ -70,9 +109,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - SGE - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted text-dark">
+        <div class="d-flex justify-content-center align-content-center">
+            &copy; 2024 - SGE 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

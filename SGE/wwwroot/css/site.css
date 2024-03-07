@@ -20,3 +20,21 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+.navBar{
+    margin:0em 3.7em;
+    background: red;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.navLinks ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 3em;
+}
+
+
+

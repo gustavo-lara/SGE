@@ -104,7 +104,7 @@ namespace SGE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OcorrenciaId,TipoOcorrenciaId,UsuarioId,DataOcorrencia,Descricao,CadAtivo,CadInativo,Finalizado,DataFinalizado")] Ocorrencia Ocorrencia)
+        public async Task<IActionResult> Create([Bind("OcorrenciaId,TipoOcorrenciaId,UsuarioId,DataOcorrencia,Descricao,CadAtivo")] Ocorrencia Ocorrencia)
         {
             if (ModelState.IsValid)
             {

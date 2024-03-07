@@ -104,6 +104,14 @@ namespace SGE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,UsuarioNome,Email,Senha,Celular,CadAtivo,DataCadastro,CadInativo,TipoUsuarioId")] Usuario usuario)
         {
+
+            // Check for email existence before saving
+            if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
+            {
+                ModelState.AddModelError("Email", "Este e-mail já está cadastrado.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                return View(usuario);
+            }
             if (ModelState.IsValid)
             {
                 usuario.UsuarioId = Guid.NewGuid();
@@ -218,7 +226,7 @@ namespace SGE.Controllers
                 }
                 else
                 {
-                    aluno.CadAtivo = true;
+                    aluno.CadAtivo = false;
                     usuario.CadInativo = null;
                     aluno.CadInativo = null;
                 }

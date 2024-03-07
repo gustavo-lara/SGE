@@ -1,0 +1,32 @@
+﻿*** Para todas as telas de Cadastro (Create)
+
+-- Antes de salvar no banco de dados, marcar como ativo;
+-- Ocultar as informações dos campos de Data da Cadastro, cadastro ativo, data de inativo na tela;
+
+*** Para todas as telas de Edição (Edit)
+-- ao clicar em cadastro cadAtivo == false .. inserir data de inativo ao salvar e remover data de inativo se cadAtivo == true.. validando no backend
+-- nao permitir alteração em data de cadastro (Validar no back end)
+
+**** Para Cadastro e Edição de Alunos / Usuários
+-- Nao permitir alterar o email de cadastro
+-- Nao permitir cadastrar dois e-mails iguais
+
+**** A action Delete de todos os controllers deve apenas inativar os cadastros no backend
+
+*** Tela Cadastro de Ocorrencias
+---Se o usuario for do tipo "Aluno" exibir somente as ocorrencias cadastradas por ele.
+-- Se o tipo de usuario for diferente de aluno, exibir todas as ocorrencias do aluno selecionado.
+-- Só cadastrar ocorrencias para  alunos ativos, porem, deve ser possivel visualizar as ocorrencias de alunos inativos;
+
+*** Tela Reserva de Salas
+-- Exibir somente as reservas da sala selecionada;
+-- Só deve ser possivel reservar salas ativas;
+
+
+**** Front End
+-- Desenvolver um padrão de estilo e aplicar a todas as paginas (Aplicar Técnicas de UI);
+-- Alterar o Menu Superior de forma que faça sentido os itens de menu;
+-- Pensar na Experiencia do Usuario (UX) e tornar a aplicação fluída;
+-- Responsivo para dispositivos Web, Tablet e Celulares.s
+
+ojihjkhjihijkhjhjkh

@@ -19,12 +19,12 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="CadAtivo" value="true" type="hidden"/> @Html.DisplayNameFor(model => model.CadAtivo)
+                    <input class="form-check-input" asp-for="CadAtivo" value="true" type="hidden" /> @Html.DisplayNameFor(model => model.CadAtivo)
                 </label>
             </div>
             <div class="form-group">
                 @* <label asp-for="CadInativo" class="control-label"></label> *@
-                <input asp-for="CadInativo" class="form-control" type="hidden"/>
+                <input asp-for="CadInativo" class="form-control" type="hidden" />
                 @* <span asp-validation-for="CadInativo" class="text-danger"></span> *@
             </div>
             <div class="form-group">
@@ -35,9 +35,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="ListaOcorrencias">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -206,6 +206,13 @@ namespace SGE.Controllers
                 return View();
             }
 
+            if (usuario.Email != _context.Usuarios.Find(id).Email)
+            {
+                ModelState.AddModelError("Email", "A alteração do e-mail não é permitida.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                return View(usuario);
+            }
+
 
             if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
             {

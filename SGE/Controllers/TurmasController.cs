@@ -105,6 +105,7 @@ namespace SGE.Controllers
             }
             else
             {
+
                 turma.CadInativo = null;
             }
             if (ModelState.IsValid)
@@ -218,7 +219,6 @@ namespace SGE.Controllers
             {
                 turma.CadInativo = DateTime.Now;
                 turma.CadAtivo = false;
-                turma.TurmaEncerrada = true;
                 _context.Update(turma);
                 _context.SaveChanges();
                 //_context.Turmas.Remove(turma);

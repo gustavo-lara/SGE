@@ -383,5 +383,62 @@ namespace SGE.Controllers
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "UsuarioId", Ocorrencia.UsuarioId);
             return View(Ocorrencia);
         }
+
+
+        // GET: Ocorrencias/Edit/5
+        public async Task<IActionResult> EditarOcorrencia(Guid id)
+        {
+            if (HttpContext.Session.GetString("email") == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                Ocorrencia ocorrencia = await _context.Ocorrencias.FindAsync(id);
+                ocorrencia.Aluno = _context.Alunos.Find(ocorrencia.AlunoId);
+                ocorrencia.Usuario = _context.Usuarios.Find(ocorrencia.UsuarioId);
+                await _context.SaveChangesAsync();
+
+                ViewData["alunoId"] = ocorrencia.AlunoId;
+                ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == ocorrencia.AlunoId).FirstOrDefault().AlunoNome;
+                ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome");
+                ViewData["usuarioId"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioId;
+                ViewData["usuarioNome"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioNome;
+
+                return View(ocorrencia);
+            }
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditarOcorrencia(Guid id, [Bind("OcorrenciaId,TipoOcorrenciaId,UsuarioId,DataOcorrencia,Descricao,CadAtivo,CadInativo,Finalizado,DataFinalizado,AlunoId,Tratativa")] Ocorrencia ocorrencia, string AlunoNome, string UsuarioNome)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (ocorrencia.Tratativa == null)
+                {
+                    ocorrencia.Tratativa = "Sem Tratativa";
+
+                }
+                ocorrencia.OcorrenciaId = id;
+                _context.Update(ocorrencia);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("OcorrenciasAluno", new { id = ocorrencia.AlunoId });
+            }
+            ViewData["alunoId"] = ocorrencia.AlunoId;
+            ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == ocorrencia.AlunoId).FirstOrDefault().AlunoNome;
+            ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome");
+            ViewData["usuarioId"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioId;
+            ViewData["usuarioNome"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioNome;
+            return View(ocorrencia);
+        }
     }
+
 }
+
+

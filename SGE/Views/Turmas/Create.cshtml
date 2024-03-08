@@ -38,9 +38,9 @@
                 @* <span asp-validation-for="CadInativo" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label asp-for="DataInicio" class="control-label"></label>
-                <input asp-for="DataInicio" class="form-control" value=@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") readonly />
-                <span asp-validation-for="DataInicio" class="text-danger"></span>
+
+                <input asp-for="DataInicio" class="form-control" value=@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") readonly type="hidden" />
+
             </div>
             <div class="form-group">
                 <label asp-for="DataFim" class="control-label"></label>
@@ -49,7 +49,7 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TurmaEncerrada" type="hidden" />
+                    <input class="form-check-input" asp-for="TurmaEncerrada" value="false" type="hidden" />
                 </label>
             </div>
             <div class="form-group">

@@ -8,8 +8,8 @@
 -- nao permitir alteração em data de cadastro (Validar no back end)
 
 **** Para Cadastro e Edição de Alunos / Usuários
--- Nao permitir alterar o email de cadastro
--- Nao permitir cadastrar dois e-mails iguais
+-- Nao permitir alterar o email de cadastro	 FEITO	SOMENTE EM USUÁRIOS
+-- Nao permitir cadastrar dois e-mails iguais FEITO	SOMENTE EM USUÁRIOS
 
 **** A action Delete de todos os controllers deve apenas inativar os cadastros no backend
 
@@ -28,3 +28,5 @@
 -- Alterar o Menu Superior de forma que faça sentido os itens de menu;
 -- Pensar na Experiencia do Usuario (UX) e tornar a aplicação fluída;
 -- Responsivo para dispositivos Web, Tablet e Celulares.s
+
+ojihjkhjihijkhjhjkh

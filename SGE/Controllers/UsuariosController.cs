@@ -93,7 +93,7 @@ namespace SGE.Controllers
                 }
             }
 
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId");
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo");
             return View();
         }
 
@@ -104,6 +104,14 @@ namespace SGE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,UsuarioNome,Email,Senha,Celular,CadAtivo,DataCadastro,CadInativo,TipoUsuarioId")] Usuario usuario)
         {
+
+            // Check for email existence before saving
+            if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
+            {
+                ModelState.AddModelError("Email", "Este e-mail já está cadastrado.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
+                return View(usuario);
+            }
             if (ModelState.IsValid)
             {
                 usuario.UsuarioId = Guid.NewGuid();
@@ -111,7 +119,7 @@ namespace SGE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 
@@ -144,7 +152,7 @@ namespace SGE.Controllers
                 return NotFound();
             }
 
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 
@@ -169,12 +177,12 @@ namespace SGE.Controllers
             if (usuario.TipoUsuarioId == _context.TiposUsuario.FirstOrDefault(a => a.Tipo == "Aluno").TipoUsuarioId)
             {
                 Aluno aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return RedirectToAction("Edit", "Alunos", new { id = aluno.AlunoId });
             }
             else
             {
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return RedirectToAction("Edit", "Usuarios", new { id = usuario.UsuarioId });
             }
         }
@@ -194,15 +202,22 @@ namespace SGE.Controllers
             if (_context.Usuarios.FirstOrDefault(u => u.UsuarioNome == "Administrador").UsuarioId == id)
             {
                 ViewData["Erro"] = "Não é possível Editar o usuário Administrador";
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return View();
+            }
+
+            if (usuario.Email != _context.Usuarios.Find(id).Email)
+            {
+                ModelState.AddModelError("Email", "A alteração do e-mail não é permitida.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                return View(usuario);
             }
 
 
             if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
             {
                 ModelState.AddModelError("Email", "Este e-mail já está cadastrado.");
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return View(usuario);
             }
 
@@ -218,7 +233,7 @@ namespace SGE.Controllers
                 }
                 else
                 {
-                    aluno.CadAtivo = false;
+                    aluno.CadAtivo = true;
                     usuario.CadInativo = null;
                     aluno.CadInativo = null;
                 }
@@ -249,7 +264,7 @@ namespace SGE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 
@@ -318,5 +333,6 @@ namespace SGE.Controllers
         {
             return _context.Usuarios.Any(e => e.UsuarioId == id);
         }
+
     }
 }

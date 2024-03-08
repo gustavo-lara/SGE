@@ -2,7 +2,6 @@
 @{
 	ViewData["Title"] = "Login";
 }
-
 @if (ViewData["Erro"] != null)
 {
 	<div class="row d-flex justify-content-center mt-5">
@@ -15,32 +14,24 @@
 	</div>
 }
 
-<div class="cardlogin">
-	<div class="container">
-		<div class="row d-flex justify-content-center align-items-center mt-5">
-			<div class="col-md-8">
-				<div class="card-body">
-					<div class="card-header">
-						<h4 class="card-title mx-4">Para continuar, acesse a sua</h4>
-						<h4 class="card-subtitle">conta educacional.</h4>
-					</div>
-					<div class="card-body">
-						<form asp-action="Login" method="post">
-							<div class="form-group mt-4">
-								<label for="inEmail" class="control-label mx-2">E-mail</label>
-								<input name="inEmail" id="inEmail" type="email" class="form-control border-white" />
-							</div>
-							<div class="form-group mt-4">
-								<label for="inSenha" class="control-label mt-lg-3 mx-2 ">Senha</label>
-								<input name="inSenha" id="inSenha" type="password" class="form-control border-white" />
-							</div>
-							<div class="mt-3">
-								<input type="submit" value="Login" class="button" />
-							</div>
-						</form>
-					</div>
-				</div>
+<div class="cardLogin">
+	<div class="inicioText">
+		<h4 style="font-size:32px; color:white; font-weight: 600;">Para continuar, acesse a sua </h4>
+		<h4 style="font-size:32px; color:#F6D524; font-weight: 600;">&nbsp; conta educacional.</h4>
+	</div>
+	<div class="inputs">
+		<form asp-action="Login" method="post">
+			<div class="inputStyle">
+				<label style="font-size:24px; color:white; font-weight:600;" for="inEmail">E-mail</label>
+				<input name="inEmail" id="inEmail" type="email" class="input" />
 			</div>
-		</div>
+			<div class="inputStyle">
+				<label style="font-size:24px; color:white; font-weight:600;" for="inSenha">Senha</label>
+				<input name="inSenha" id="inSenha" type="password" class="input" />
+			</div>
+			<div class="btnn">
+				<input type="submit" value="Login" class="button" style="margin-top:3em; width:200px; height:55px; font-size: 24px; color:#F6D524; background: white; border-radius:0.2em; border:none;" />
+			</div>
+		</form>
 	</div>
 </div>

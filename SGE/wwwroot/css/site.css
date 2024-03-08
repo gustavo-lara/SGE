@@ -20,3 +20,27 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+/*Página Home*/
+
+.botaoBranco {
+    border: 4px solid #fff;
+    border-radius: 20px;
+    background: none;
+    
+    color: #fff;
+    text-align: center;
+
+    align-items: center;
+}
+
+    .buttonAzul:hover {
+        background: #fff;
+        color: #2E75D3;
+    }
+
+.blocoTransparente{
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    height:fit-content;
+}

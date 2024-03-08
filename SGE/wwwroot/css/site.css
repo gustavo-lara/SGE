@@ -79,3 +79,9 @@ body {
     object-fit: cover;
     background-size: cover;
 }
+
+#rodape {
+    /*background-color: #F6D524;*/
+    /*background-color: white;*/
+    background-color: rgba(255, 255, 255, 0.3);
+}

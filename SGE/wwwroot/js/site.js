@@ -17,3 +17,10 @@
 });
 
 
+//function validarCampo() {
+//    var campo = Context.Session.GetString("login");
+//    var divBackground = document.getElementById("Background");
+
+//    if (campo.value !== "") {
+//        divBackground.style.background = "white"
+//    }

@@ -99,12 +99,13 @@ namespace SGE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TurmaId,TurmaNome,Turno,Serie,CadAtivo,CadInativo,DataInicio,DataFim,TurmaEncerrada")] Turma turma)
         {
-            if (turma.CadAtivo == false)
+            if (turma.CadAtivo == true)
             {
                 turma.CadInativo = DateTime.Now;
             }
             else
             {
+
                 turma.CadInativo = null;
             }
             if (ModelState.IsValid)

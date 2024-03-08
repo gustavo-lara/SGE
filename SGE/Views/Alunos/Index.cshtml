@@ -48,6 +48,7 @@
 
 <table class="table">
     <thead>
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.UrlFoto)
@@ -69,6 +70,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CadAtivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CadInativo)
             </th>
             <th></th>
         </tr>
@@ -112,6 +116,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CadAtivo)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CadInativo)
+                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.AlunoId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.AlunoId">Details</a> |

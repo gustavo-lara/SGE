@@ -27,6 +27,11 @@
                 <input asp-for="Senha" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label for="ConfirmeSenha" class="control-label">Confirme a Senha</label>
+                <input id="ConfirmeSenha" type="password" name="ConfirmeSenha" class="form-control" />
+            </div>
             <div class="form-group">
                 <label asp-for="Celular" class="control-label"></label>
                 <input asp-for="Celular" class="form-control" />
@@ -49,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TipoUsuarioId" class="control-label"></label>
-                <select asp-for="TipoUsuarioId" class ="form-control" asp-items="ViewBag.TipoUsuarioId"></select>
+                <select asp-for="TipoUsuarioId" class="form-control" asp-items="ViewBag.TipoUsuarioId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -63,5 +68,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

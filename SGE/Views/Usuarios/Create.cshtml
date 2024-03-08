@@ -34,22 +34,22 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="CadAtivo" /> @Html.DisplayNameFor(model => model.CadAtivo)
+                    <input class="form-check-input" asp-for="CadAtivo" value="true" /> @Html.DisplayNameFor(model => model.CadAtivo)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" />
-                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+
+                <input asp-for="DataCadastro" class="form-control" value=@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") readonly type="hidden" />
+
             </div>
             <div class="form-group">
-                <label asp-for="CadInativo" class="control-label"></label>
-                <input asp-for="CadInativo" class="form-control" />
-                <span asp-validation-for="CadInativo" class="text-danger"></span>
+
+                <input asp-for="CadInativo" class="form-control" type="hidden" />
+
             </div>
             <div class="form-group">
                 <label asp-for="TipoUsuarioId" class="control-label"></label>
-                <select asp-for="TipoUsuarioId" class ="form-control" asp-items="ViewBag.TipoUsuarioId"></select>
+                <select asp-for="TipoUsuarioId" class="form-control" asp-items="ViewBag.TipoUsuarioId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -63,5 +63,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

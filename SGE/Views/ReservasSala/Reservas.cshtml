@@ -10,7 +10,13 @@
 
 
 <div class="container">
+
     <h1 class="text-center">Reservas de Salas</h1>
+    <p>
+        <a asp-controller="Salas" asp-action="Create">Criar Sala</a>
+    </p>
+
+
     @if (ViewData["Erro"] != null)
     {
         <div class="row">

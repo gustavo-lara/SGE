@@ -29,11 +29,13 @@ body {
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
-    background-color: #F6D524;
-    /*    background-color: rgba(255, 255, 255, 0.3);*/
+    /*    background-color: #F6D524;*/
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 1;
-    margin-top: 9em;
+    margin-left: 14.9em;
+    width: 800px;
+    margin-top: 7.5em;
     padding: 0em 4em;
 }
 
@@ -46,7 +48,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 900px;
+    width: 500px;
+    height: 390px;
 }
 
     .inputs div {
@@ -69,4 +72,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.Background {
+    background-image: url('../img/psychedelic-paper-shapes-with-copy-space.jpg');
+    object-fit: cover;
+    background-size: cover;
 }

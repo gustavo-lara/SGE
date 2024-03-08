@@ -86,6 +86,24 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.navBar{
+    margin:0em 3.7em;
+    background: red;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.navLinks ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 3em;
+}
+
+
+
+
 /*Página Home*/
 
 .botaoBranco {

@@ -226,7 +226,7 @@ namespace SGE.Controllers
                 }
                 else
                 {
-                    aluno.CadAtivo = false;
+                    aluno.CadAtivo = true;
                     usuario.CadInativo = null;
                     aluno.CadInativo = null;
                 }
@@ -326,5 +326,6 @@ namespace SGE.Controllers
         {
             return _context.Usuarios.Any(e => e.UsuarioId == id);
         }
+
     }
 }

@@ -48,7 +48,7 @@
                         @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TiposOcorrencia" asp-action="Index">Tipos de Ocorrência</a>
                         </li>  *@
-							</li>
+
                     </ul>
                 </div>
                 @if (Context.Session.GetString("usuario") != null)
@@ -108,7 +108,7 @@
             @RenderBody()
         </main>
     </div>
-	</div>
+
     <footer style="border-top:1px solid #A2A2A2;" class=" footer text-muted text-black">
         <div class="d-flex justify-content-center align-content-center">
             &copy; 2024 - SGE 
@@ -117,7 +117,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
 
 	@await RenderSectionAsync("Scripts", required: false)
 </body>

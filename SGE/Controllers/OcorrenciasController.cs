@@ -385,7 +385,7 @@ namespace SGE.Controllers
 
 
         // GET: Ocorrencias/Edit/5
-        public async Task<IActionResult> EditarOcorrencia(Guid? id)
+        public async Task<IActionResult> EditarOcorrencia(Guid id)
         {
             if (HttpContext.Session.GetString("email") == null)
             {
@@ -393,29 +393,51 @@ namespace SGE.Controllers
             }
             else
             {
-                string Email = HttpContext.Session.GetString("email");
-                var usuario = _context.Usuarios.Where(a => a.Email == Email).FirstOrDefault();
-                Guid idTipoAluno = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
-                if (usuario.TipoUsuarioId == idTipoAluno)
-                {
-                    return RedirectToAction("AcessoNegado", "Home");
-                }
+                Ocorrencia ocorrencia = await _context.Ocorrencias.FindAsync(id);
+                ocorrencia.Aluno = _context.Alunos.Find(ocorrencia.AlunoId);
+                ocorrencia.Usuario = _context.Usuarios.Find(ocorrencia.UsuarioId);
+                await _context.SaveChangesAsync();
+
+                ViewData["alunoId"] = ocorrencia.AlunoId;
+                ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == ocorrencia.AlunoId).FirstOrDefault().AlunoNome;
+                ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome");
+                ViewData["usuarioId"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioId;
+                ViewData["usuarioNome"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioNome;
+
+                return View(ocorrencia);
             }
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditarOcorrencia(Guid id, [Bind("OcorrenciaId,TipoOcorrenciaId,UsuarioId,DataOcorrencia,Descricao,CadAtivo,CadInativo,Finalizado,DataFinalizado,AlunoId,Tratativa")] Ocorrencia ocorrencia, string AlunoNome, string UsuarioNome)
+        {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var Ocorrencia = await _context.Ocorrencias.FindAsync(id);
-            if (Ocorrencia == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                if (ocorrencia.Tratativa == null)
+                {
+                    ocorrencia.Tratativa = "Sem Tratativa";
+
+                }
+                ocorrencia.OcorrenciaId = id;
+                _context.Update(ocorrencia);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("OcorrenciasAluno", new { id = ocorrencia.AlunoId });
             }
-            ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome", Ocorrencia.TipoOcorrenciaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "UsuarioNome", Ocorrencia.UsuarioId);
-            return View(Ocorrencia);
+            ViewData["alunoId"] = ocorrencia.AlunoId;
+            ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == ocorrencia.AlunoId).FirstOrDefault().AlunoNome;
+            ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome");
+            ViewData["usuarioId"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioId;
+            ViewData["usuarioNome"] = _context.Usuarios.Where(a => a.Email == HttpContext.Session.GetString("email")).FirstOrDefault().UsuarioNome;
+            return View(ocorrencia);
         }
     }
 
 }
+
+

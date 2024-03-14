@@ -172,3 +172,34 @@ body {
     margin-top: 1.5em;
     color: black;
 }
+
+.headerTabela{
+    background: rgba(255, 255, 255, 0.7);
+    border:none;
+    border-radius: 5px;
+
+    width: 100%;
+    height:fit-content;
+    padding: 0.7em 0;
+}
+
+.textoHeaderTabela{
+    padding-left: 1em;
+    padding-right: 1em;
+
+    text-transform:capitalize;
+}
+
+.textoBrancoForm{
+    color: #fff;
+}
+
+.tabelaCalendario {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+    .tabelaCalendario td {
+        padding: 1em;
+        border: 1px solid #fff;
+    }

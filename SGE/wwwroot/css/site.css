@@ -162,3 +162,17 @@ body {
 
     text-transform:capitalize;
 }
+
+.textoBrancoForm{
+    color: #fff;
+}
+
+.tabelaCalendario {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+    .tabelaCalendario td {
+        padding: 1em;
+        border: 1px solid #fff;
+    }

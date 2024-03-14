@@ -1,223 +1,259 @@
 ﻿@model IEnumerable<SGE.Models.ReservaSala>
 @using System.Globalization
 @{
-    var years = Enumerable.Range(DateTime.Now.Year, 5);
-    var months = Enumerable.Range(1, 12);
-    List<Sala> ListaSalas = (List<Sala>)ViewData["Salas"];
-    List<ReservaSala> ListaReservas = (List<ReservaSala>)ViewData["ReservasSala"];
+	var years = Enumerable.Range(DateTime.Now.Year, 5);
+	var months = Enumerable.Range(1, 12);
+	List<Sala> ListaSalas = (List<Sala>)ViewData["Salas"];
+	List<ReservaSala> ListaReservas = (List<ReservaSala>)ViewData["ReservasSala"];
 
 }
 
 <div>
-    <div class="d-flex row justify-content-between my-5">
-        <div style="width: 15%;">
-            <img style="max-width:200px"/>
-        </div>
-        <div style="width: 85%;" class="ps-5">
-            <div class="d-flex row align-items-center justify-content-between">
-                <h1 style="width:18%; font-size:3.2rem; color:#F6D524;">Salas</h1>
-                <div style="height:5px; width:82%; background:#F6D524;" />
-            </div>
-            <p style="font-size:1.5rem; color:#fff;">Administre as reservas de salas.</p>
-        </div>
-    </div>
+	<div class="d-flex row justify-content-between my-5">
+		<div style="width: 15%;">
+			<img style="max-width:200px" />
+		</div>
+		<div style="width: 85%;" class="ps-5">
+			<div class="d-flex row align-items-center justify-content-between">
+				<h1 style="width:18%; font-size:3.2rem; color:#F6D524;">Salas</h1>
+				<div style="height:5px; width:82%; background:#F6D524;" />
+			</div>
+			<p style="font-size:1.5rem; color:#fff;">Administre as reservas de salas.</p>
+		</div>
+	</div>
 
-    <div class="justify-content-between my-5" style="width:100%;">
-        <div class="d-flex row align-items-center" style="width:100%;">
-            <div style="width:40%;" class="d-flex justify-content-between align-items-center">
-                <h2 style="font-size:2rem; color:#fff;">Salas Cadastradas</h2>
-                <button class="btn">
-                    <svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg>
-                </button>
-            </div>
-            <div style="width:60%;">
-                Barra de Pesquisa
-            </div>
-        </div>
-        <div style="width:100%;">
-            Tabela
-        </div>
-    </div>
+	<div class="justify-content-between my-5" style="width:100%;">
+		<div class="d-flex row align-items-center" style="width:100%;">
+			<div style="width:40%;" class="d-flex justify-content-between align-items-center">
+				<h2 style="font-size:2rem; color:#fff;">Salas Cadastradas</h2>
+				<button class="btn">
+					<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg>
+				</button>
+			</div>
+			<div style="width:60%;">
+				Barra de Pesquisa
+			</div>
+		</div>
+		<div style="width:100%;">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Sala.SalaNome)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.CadAtivo)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.CadInativo)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Sala.SalaNome)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.CadAtivo)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.CadInativo)
+							</td>
+							<td>
+								<a class="text-dark" asp-action="Edit" asp-route-id="@item.SalaId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+								<a class="text-dark" asp-action="Details" asp-route-id="@item.SalaId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+								<a class="text-dark" asp-action="Delete" asp-route-id="@item.SalaId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
 <div class="container">
 
-    <h1 class="text-center">Reservas de Salas</h1>
-    <p>
-        <a asp-controller="Salas" asp-action="Create">Criar Sala</a>
-    </p>
+	<h1 class="text-center">Reservas de Salas</h1>
+	<p>
+		<a asp-controller="Salas" asp-action="Create">Criar Sala</a>
+	</p>
 
 
-    @if (ViewData["Erro"] != null)
-    {
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <div class="alert alert-danger">
-                    <strong> @ViewData["Erro"] </strong>
-                </div>
-            </div>
-        </div>
-    }
-    <div class="row">
-        <div class="col-12">
-            <form method="post" asp-action="FiltarSalas">
-                <div class="input-group mb-1">
-                    <input type="text" class="form-control" name="filtro"
-                           placeholder="Pesquisar por Sala" aria-label="Pesquisar por Sala"
-                           aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="submit" id="button-addon2">
-                        <svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar"></svg>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+	@if (ViewData["Erro"] != null)
+	{
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<div class="alert alert-danger">
+					<strong> @ViewData["Erro"] </strong>
+				</div>
+			</div>
+		</div>
+	}
+	<div class="row">
+		<div class="col-12">
+			<form method="post" asp-action="FiltarSalas">
+				<div class="input-group mb-1">
+					<input type="text" class="form-control" name="filtro"
+						   placeholder="Pesquisar por Sala" aria-label="Pesquisar por Sala"
+						   aria-describedby="button-addon2">
+					<button class="btn btn-dark" type="submit" id="button-addon2">
+						<svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar"></svg>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
-    <div class="row">
-        <div class="col-12 h-25 overflow-auto">
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th>
-                            Nome da Sala
-                        </th>
-                        <th class="text-end">
-                            Selecionar
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in ListaSalas)
-                    {
-                        <tr>
-                            <td>
-                                @item.SalaNome
-                            </td>
-                            <td class="text-end">
-                                <a asp-action="SelecionaSala" asp-route-id="@item.SalaId" class="btn btn-primary">Selecionar</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row text center mt-3 mb-3">
-        <div class="col-12 d-flex justify-content-around">
+	<div class="row">
+		<div class="col-12 h-25 overflow-auto">
+			<table class="table table-sm">
+				<thead>
+					<tr>
+						<th>
+							Nome da Sala
+						</th>
+						<th class="text-end">
+							Selecionar
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in ListaSalas)
+					{
+						<tr>
+							<td>
+								@item.SalaNome
+							</td>
+							<td class="text-end">
+								<a asp-action="SelecionaSala" asp-route-id="@item.SalaId" class="btn btn-primary">Selecionar</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row text center mt-3 mb-3">
+		<div class="col-12 d-flex justify-content-around">
 
-            @if (ViewData["SalaSelecionada"] != null)
-            {
-                <div class="d-flex justify-content-between" style="width:100%;">
-                    <div class="d-flex justify-content-start" style="width:70%;">
-                        <h2 style="font-size:2rem; color:#fff;">Reservas da Sala:</h2>
-                        <p style="background:none; border: none; border-bottom: 1px solid #fff; color: gray; width:40%" class="ms-3">@ViewData["SalaSelecionada"]</p>
-                    </div>
-                    <a asp-action="NovaReserva" asp-route-id="@ViewData["IdSalaSelecionada"]" class="btn botaoBranco2" style="width:20%;">Nova Reserva</a>
-                </div>
-            }
-        </div>
-    </div>
+			@if (ViewData["SalaSelecionada"] != null)
+			{
+				<div class="d-flex justify-content-between" style="width:100%;">
+					<div class="d-flex justify-content-start" style="width:70%;">
+						<h2 style="font-size:2rem; color:#fff;">Reservas da Sala:</h2>
+						<p style="background:none; border: none; border-bottom: 1px solid #fff; color: gray; width:40%" class="ms-3">@ViewData["SalaSelecionada"]</p>
+					</div>
+					<a asp-action="NovaReserva" asp-route-id="@ViewData["IdSalaSelecionada"]" class="btn botaoBranco2" style="width:20%;">Nova Reserva</a>
+				</div>
+			}
+		</div>
+	</div>
 
-    @if (ViewData["SalaSelecionada"] != null)
-    {
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <select id="month" class="headerTabela textoHeaderTabela">
-                    @foreach (var month in months)
-                    {
-                        <option value="@month">@DateTimeFormatInfo.CurrentInfo.GetMonthName(month)</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-6">
-                <select id="year" class="headerTabela textoHeaderTabela">
-                    @foreach (var year in years)
-                    {
-                        <option value="@year">@year</option>
-                    }
-                </select>
-            </div>
-        </div>
+	@if (ViewData["SalaSelecionada"] != null)
+	{
+		<div class="row mb-3">
+			<div class="col-md-6">
+				<select id="month" class="headerTabela textoHeaderTabela">
+					@foreach (var month in months)
+					{
+						<option value="@month">@DateTimeFormatInfo.CurrentInfo.GetMonthName(month)</option>
+					}
+				</select>
+			</div>
+			<div class="col-md-6">
+				<select id="year" class="headerTabela textoHeaderTabela">
+					@foreach (var year in years)
+					{
+						<option value="@year">@year</option>
+					}
+				</select>
+			</div>
+		</div>
 
-        <div id="calendar" class="">
-            <div id="calendar-header">
-                <div id="calendar-month-year">
-                    <span id="calendar-month"></span>
-                    <span id="calendar-year"></span>
-                </div>
-            </div>
-            <div id="calendar-body">
-                <table class="tabelaCalendario" style="width:100%;">
-                    <thead id="calendar-weekdays">
-                        <tr>
-                            <td class="text-center">Dom</td>
-                            <td class="text-center">Seg</td>
-                            <td class="text-center">Ter</td>
-                            <td class="text-center">Qua</td>
-                            <td class="text-center">Qui</td>
-                            <td class="text-center">Sex</td>
-                            <td class="text-center">Sab</td>
-                        </tr>
-                    </thead>
-                    <tbody id="calendar-days">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+		<div id="calendar" class="">
+			<div id="calendar-header">
+				<div id="calendar-month-year">
+					<span id="calendar-month"></span>
+					<span id="calendar-year"></span>
+				</div>
+			</div>
+			<div id="calendar-body">
+				<table class="tabelaCalendario" style="width:100%;">
+					<thead id="calendar-weekdays">
+						<tr>
+							<td class="text-center">Dom</td>
+							<td class="text-center">Seg</td>
+							<td class="text-center">Ter</td>
+							<td class="text-center">Qua</td>
+							<td class="text-center">Qui</td>
+							<td class="text-center">Sex</td>
+							<td class="text-center">Sab</td>
+						</tr>
+					</thead>
+					<tbody id="calendar-days">
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-        <div id="modal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data - dismiss="modal" aria - label="Close"> <span aria - hidden="true">& times; </span></button>
-                        <h4 class="modal-title">
-                            Selected Date < /h4>
-                            < /div>
-                            < div class="modal-body" >
-                            <p>Selected date: </p>
-                            < /div>
-                            < div class="modal-footer" >
-                            <button type="button" class="btn btn-default" data - dismiss="modal">
-                                Close
-                            </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    @if (ListaReservas != null)
-    {
-        <div id="idReservasSala" class="d-none">
-            <table class="table" id="TabelaReservas">
-                @foreach (var item in ListaReservas)
-                {
-                    <tr>
-                        <td class="dataInicio">
-                            @item.DataReserva.ToString("yyyy-MM-dd")
-                        </td>
-                        <td class="dataFim">
-                            @item.DataFimReserva.ToString("yyyy-MM-dd")
-                        </td>
-                        <td class="horaInicio">
-                            @item.HoraInicio
-                        </td>
-                        <td class="horaFim">
-                            @item.HoraFim
-                        </td>
-                        <td class="usuario">
-                            @item.Usuario.UsuarioNome
-                        </td>
-                        <td class="cor">
-                            @item.CorReserva
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
-    }
+		<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data - dismiss="modal" aria - label="Close"> <span aria - hidden="true">& times; </span></button>
+						<h4 class="modal-title">
+							Selected Date < /h4>
+							< /div>
+							< div class="modal-body" >
+							<p>Selected date: </p>
+							< /div>
+							< div class="modal-footer" >
+							<button type="button" class="btn btn-default" data - dismiss="modal">
+								Close
+							</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+	@if (ListaReservas != null)
+	{
+		<div id="idReservasSala" class="d-none">
+			<table class="table" id="TabelaReservas">
+				@foreach (var item in ListaReservas)
+				{
+					<tr>
+						<td class="dataInicio">
+							@item.DataReserva.ToString("yyyy-MM-dd")
+						</td>
+						<td class="dataFim">
+							@item.DataFimReserva.ToString("yyyy-MM-dd")
+						</td>
+						<td class="horaInicio">
+							@item.HoraInicio
+						</td>
+						<td class="horaFim">
+							@item.HoraFim
+						</td>
+						<td class="usuario">
+							@item.Usuario.UsuarioNome
+						</td>
+						<td class="cor">
+							@item.CorReserva
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	}
 </div>
 
 @section scripts {
-    <script src="~/js/reservas.js"></script>
+	<script src="~/js/reservas.js"></script>
 }
 

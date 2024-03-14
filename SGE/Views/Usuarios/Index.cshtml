@@ -14,16 +14,16 @@
 				<h1 style="width:25%; font-size:3.2rem; color:#F6D524;">Usuários</h1>
 				<div style="height:5px; width:75%; background:#F6D524;" />
 			</div>
-			<p style="font-size:1.5rem; color:#2E75D3;">Visualize quem tem acesso à ferramenta SGE</p>
+			<p style="font-size:1.5rem; color:#FFFF;">Visualize quem tem acesso à ferramenta SGE</p>
 		</div>
 	</div>
 
 	<div class="d-flex row justify-content-between" style="width:100%;">
 		<div style="width:40%;">
 			<div class="d-flex justify-content-between">
-				<h2 style="font-size:2rem; color:#2E75D3;">Tipos de Usuários</h2>
+				<h2 style="font-size:2rem; color:#FFFF; padding:1em">Tipos de Usuários</h2>
 				<button class="btn">
-					<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#2e75d3"></svg>
+					<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:white"></svg>
 				</button>
 			</div>
 			<table class="tabela1 table-borderless">
@@ -43,9 +43,9 @@
 								@Html.DisplayFor(modelItem => item.TipoUsuario.Tipo)
 							</td>
 							<td>
-								<a class="btn btn-outline-success me-3" asp-action="Edit" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
-								<a class="btn btn-outline-info me-3" asp-action="Details" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
-								<a class="btn btn-outline-danger me-3" asp-action="Delete" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+								<a class="text-dark" asp-action="Edit" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+								<a class="text-dark" asp-action="Details" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+								<a class="text-dark" asp-action="Delete" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
 							</td>
 						</tr>
 					}
@@ -54,17 +54,17 @@
 		</div>
 		<div style="width:55%;">
 			<div class="d-flex justify-content-between">
-				<h2 style="font-size:2rem; color:#2E75D3;">Usuários Cadastrados</h2>
+				<h2 style="font-size:2rem; color:#FFFF; padding:1em">Usuários Cadastrados</h2>
 				<button class="btn">
 					<a asp-action="Create">
 
-						<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#2e75d3"></svg>
+						<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#FFFF"></svg>
 					</a>
 				</button>
 			</div>
 			<div>
 				<div>
-					<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar aluno" />
+					<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar usuário" />
 				</div>
 				<div>
 					<table class="tabela2Cabeca table-borderless">
@@ -127,15 +127,16 @@
 
 									<td style="padding:0.4em;">
 										<div style="padding:0.2em;">
-											<a class="btn btn-outline-success me-3" asp-action="Edit" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+											<a class="text-dark" asp-action="Edit" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+
 										</div>
 
 										<div style="padding:0.2em;">
-											<a class="btn btn-outline-info me-3" asp-action="Details" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+											<a class="text-dark" asp-action="Details" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
 										</div>
 
 										<div style="padding:0.2em;">
-											<a class="btn btn-outline-danger me-3" asp-action="Delete" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+											<a class="text-dark" asp-action="Delete" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
 										</div>
 									</td>
 								</tr>

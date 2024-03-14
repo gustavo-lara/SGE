@@ -22,9 +22,7 @@
         <div class="d-flex row align-items-center" style="width:100%;">
             <div style="width:40%;" class="d-flex justify-content-between align-items-center">
                 <h2 style="font-size:2rem; color:#fff;">Todas as Turmas</h2>
-                <button class="btn">
-                    <svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg>
-                </button>
+                <a class="btn" asp-action="Create"><svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg></a>
             </div>
             <div style="width:60%;">
                 Barra de Pesquisa
@@ -38,7 +36,7 @@
     <div class="my-5" stye="width:100%;">
         <div class="d-flex justify-content-start align-items-center">
             <h2 style="font-size:2rem; color:#fff;">Turma:</h2>
-            <input type="text" placeholder="Selecionar turma" style="background:none; border: none; border-bottom: 1px solid #fff;" class="ps-3 ms-3"/>
+            <input type="text" placeholder="Selecionar turma" style="background:none; border: none; border-bottom: 1px solid #fff;" class="ps-3 ms-3" />
         </div>
         <div class="d-flex row justify-content-between mt-3">
             <div style="width:50%;">
@@ -57,9 +55,7 @@
     </div>
 </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -91,38 +87,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TurmaNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CadAtivo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CadInativo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TurmaEncerrada)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TurmaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TurmaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TurmaId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TurmaNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Turno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CadAtivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CadInativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TurmaEncerrada)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TurmaId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TurmaId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TurmaId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

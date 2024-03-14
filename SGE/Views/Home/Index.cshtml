@@ -1,9 +1,9 @@
 ﻿@{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 
-	var sessionEmail = Context.Session.GetString("email");
-	var sessionNome = Context.Session.GetString("nome");
-	var sessionTipoUsuarioId = Context.Session.GetString("tipo");
+    var sessionEmail = Context.Session.GetString("email");
+    var sessionNome = Context.Session.GetString("nome");
+    var sessionTipoUsuarioId = Context.Session.GetString("tipo");
 
 }
 
@@ -27,20 +27,21 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="row d-flex justify-content-between m-0" style="width:100%;">
-        <button class="col-4 btn botaoBranco pt-4" style="width:32%; height:150px;">
-            <svg bootstrap-icon="PlusSquare" width="50" height="50" aria-label="Pesquisar"></svg>
+        <a class="btn col-4 botaoBranco pt-4" asp-action="Create" asp-controller="Alunos" style="width:32%; height:150px;">
+            <svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg>
             <p style="font-size:24px;"> Cadastrar Aluno </p>
-        </button>
-        <button class="col-4 btn botaoBranco pt-4" style="width:32%; height:150px;">
+        </a>
+
+        <a class="btn col-4 botaoBranco pt-4" asp-action="Reservas" asp-controller="ReservasSala" style="width:32%; height:150px;">
             <svg bootstrap-icon="ArrowRightSquare" width="50" height="50" aria-label="Pesquisar"></svg>
             <p style="font-size:24px;"> Reservar Sala </p>
-        </button>
-        <button class="col-4 btn botaoBranco pt-4" style="width:32%; height:150px;">
+        </a>
+        <a class="btn col-4 botaoBranco pt-4" asp-action="ListaOcorrencias" asp-controller="Ocorrencias" style="width:32%; height:150px;">
             <svg bootstrap-icon="PencilSquare" width="50" height="50" aria-label="Pesquisar"></svg>
             <p style="font-size:24px;"> Nova ocorrência </p>
-        </button>
+        </a>
     </div>
 </div>

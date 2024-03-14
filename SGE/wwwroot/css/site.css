@@ -101,6 +101,9 @@ body {
     gap: 3em;
 }
 
+
+
+
 /*Página Home*/
 
 .botaoBranco {
@@ -114,10 +117,28 @@ body {
     align-items: center;
 }
 
-    .buttonAzul:hover {
+    .botaoBranco:hover {
         background: #fff;
         color: #2E75D3;
     }
+
+.botaoBranco2{
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: none;
+
+    color: #fff;
+    text-align: center;
+
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.botaoBranco2:hover {
+    background: #fff;
+    color: #2E75D3;
+}
 
 .blocoTransparente{
     background: rgba(255, 255, 255, 0.3);
@@ -125,5 +146,19 @@ body {
     height:fit-content;
 }
 
+.headerTabela{
+    background: rgba(255, 255, 255, 0.7);
+    border:none;
+    border-radius: 5px;
 
+    width: 100%;
+    height:fit-content;
+    padding: 0.7em 0;
+}
 
+.textoHeaderTabela{
+    padding-left: 1em;
+    padding-right: 1em;
+
+    text-transform:capitalize;
+}

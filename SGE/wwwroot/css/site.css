@@ -86,11 +86,26 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.navBar{
-    margin:0em 3.7em;
+.navBar {
+    margin: 0em 3.7em;
     background: red;
-    display:flex;
-    justify-content:space-around;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navLinks ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 3em;
+}
+
+.navBar {
+    margin: 0em 3.7em;
+    background: red;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -110,20 +125,50 @@ body {
     border: 4px solid #fff;
     border-radius: 20px;
     background: none;
-    
     color: #fff;
     text-align: center;
-
     align-items: center;
 }
 
-    .buttonAzul:hover {
-        background: #fff;
-        color: #2E75D3;
-    }
+.buttonAzul:hover {
+    background: #fff;
+    color: black;
+}
 
-.blocoTransparente{
-    background: rgba(255, 255, 255, 0.3);
+.blocoTransparente {
+    background: rgba(255, 255, 255, 03);
     color: #fff;
-    height:fit-content;
+    height: fit-content;
+}
+
+
+.tabela1 {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    height: 70%;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 1.5em;
+    color: black;
+}
+
+.tabela2Cabeca {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    height: 55%;
+    border-radius: 5px;
+    margin-top: 1.5em;
+    color: black;
+}
+
+
+.tabela2 {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    height: 55%;
+    border-radius: 5px;
+    margin-top: 1.5em;
+    color: black;
 }

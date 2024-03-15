@@ -4,6 +4,6 @@
     {
         public Guid TipoUsuarioId { get; set; }
         public string Tipo { get; set; }
-        public IEnumerable<Aluno>? Alunos { get; set; }
+        public IEnumerable<Alunos>? Alunos { get; set; }
     }
 }

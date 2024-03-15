@@ -63,9 +63,12 @@
 				</button>
 			</div>
 			<div>
+				<form method="post" asp-action="FiltarAlunos">
 				<div>
-					<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar usuário" />
+					<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" name="filtro
+					 placeholder="Pesquisar por Aluno" aria-label="Pesquisar por Aluno" aria-describedby="button-addon2" />
 				</div>
+				</form>
 				<div>
 					<table class="tabela2Cabeca table-borderless">
 						<thead>

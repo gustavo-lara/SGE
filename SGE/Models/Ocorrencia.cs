@@ -8,7 +8,7 @@
         public Guid UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
         public Guid AlunoId { get; set; }
-        public Aluno? Aluno { get; set; }
+        public Alunos? Aluno { get; set; }
         public DateTime DataOcorrencia { get; set; }
         public string Descricao { get; set; }
         public bool CadAtivo { get; set; }

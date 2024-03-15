@@ -255,7 +255,7 @@ namespace SGE.Controllers
                     return RedirectToAction("AcessoNegado", "Home");
                 }
             }
-            List<Aluno> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
+            List<Alunos> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
             List<Turma> turmas = _context.Turmas.Where(a => a.CadAtivo == true).ToList();
             List<AlunoTurma> alunoTurmas = _context.AlunosTurma.ToList();
             ViewData["Alunos"] = alunos.ToList();
@@ -279,7 +279,7 @@ namespace SGE.Controllers
                     return RedirectToAction("AcessoNegado", "Home");
                 }
             }
-            List<Aluno> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
+            List<Alunos> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
             List<Turma> turmas = _context.Turmas.Where(a => a.CadAtivo == true).ToList();
             List<AlunoTurma> alunoTurmas = _context.AlunosTurma.Where(a => a.TurmaId != id).ToList();
             alunos = alunos.Where(a => !alunoTurmas.Any(at => at.AlunoId == a.AlunoId)).ToList();
@@ -289,13 +289,13 @@ namespace SGE.Controllers
             ViewData["TurmaSelecionada"] = turmaSelecionada.TurmaNome;
             ViewData["TurmaId"] = id;
             List<AlunoTurma> alunosDaTurma = _context.AlunosTurma.Where(at => at.TurmaId == id).ToList();
-            List<Aluno> alunosMatriculados = new List<Aluno>();
+            List<Alunos> alunosMatriculados = new List<Alunos>();
             foreach (var aluno in alunosDaTurma)
             {
                 alunosMatriculados.Add(_context.Alunos.Where(a => a.AlunoId == aluno.AlunoId).FirstOrDefault());
             }
             ViewData["AlunosDaTurma"] = alunosMatriculados;
-            List<Aluno> alunosDisponiveis = new List<Aluno>();
+            List<Alunos> alunosDisponiveis = new List<Alunos>();
             foreach (var aluno in alunos)
             {
                 if (!alunosMatriculados.Any(a => a.AlunoId == aluno.AlunoId))
@@ -313,7 +313,7 @@ namespace SGE.Controllers
             if (idTurma == null)
             {
                 ViewData["Erro"] = "Selecione uma turma para adicionar Alunos";
-                List<Aluno> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
+                List<Alunos> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
                 List<Turma> turmas = _context.Turmas.Where(a => a.CadAtivo == true).ToList();
                 List<AlunoTurma> alunoTurmas = _context.AlunosTurma.ToList();
                 ViewData["Alunos"] = alunos.ToList();
@@ -334,7 +334,7 @@ namespace SGE.Controllers
             if (idTurma == null)
             {
                 ViewData["Erro"] = "Selecione uma turma para Remover Alunos";
-                List<Aluno> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
+                List<Alunos> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
                 List<Turma> turmas = _context.Turmas.Where(a => a.CadAtivo == true).ToList();
                 List<AlunoTurma> alunoTurmas = _context.AlunosTurma.ToList();
                 ViewData["Alunos"] = alunos.ToList();
@@ -356,7 +356,7 @@ namespace SGE.Controllers
             List<Turma> turmas = _context.Turmas.Where(a => a.CadAtivo == true).ToList();
             turmas = turmas.Where(a => a.TurmaNome.ToUpper().Contains(filtro.ToUpper())).ToList();
             ViewData["Turmas"] = turmas;
-            List<Aluno> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
+            List<Alunos> alunos = _context.Alunos.Where(a => a.CadAtivo == true).ToList();
             List<AlunoTurma> alunoTurmas = _context.AlunosTurma.ToList();
             ViewData["Alunos"] = alunos.ToList();
             ViewData["Turmas"] = turmas.ToList();

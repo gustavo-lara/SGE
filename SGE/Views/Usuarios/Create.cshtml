@@ -17,6 +17,32 @@
     <div style="width: 100%; height:5px; background:#f6d524;"> </div>
 </div>
 
+
+<div class="row">
+    <div class="">
+        <form>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UsuarioNome" class="control-label"></label>
+                <input asp-for="UsuarioNome" class="form-control" />
+                <span asp-validation-for="UsuarioNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Senha" class="control-label"></label>
+                <input asp-for="Senha" class="form-control" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+            </form>
+<h4>Usuario</h4>
+
+
+
+
 <div>
     <form asp-action="Create" class="d-flex row justify-content-between align-items-center" style="width:100%;">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

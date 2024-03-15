@@ -139,12 +139,6 @@ body {
         color: #2E75D3;
     }
 
-.blocoTransparente{
-    background: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    height:fit-content;
-}
-
 /*Create Usuários*/
 
 .styleCreateUsuarios{
@@ -198,6 +192,11 @@ body {
     text-align: center;
     align-items: center;
 }
+
+    .botaoBranco:hover {
+        background: #fff;
+        color: black;
+    }
 
 .botaoBranco2 {
     border: 2px solid #fff;

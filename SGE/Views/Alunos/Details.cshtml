@@ -4,111 +4,119 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div style=" margin-bottom: 2em;">
+    <div class="d-flex justify-content-between" style="width:100%;">
+        <h2 style="width:93%; font-size:2.8rem; color:#F6D524;">Detalhes do Aluno</h2>
+        <a asp-action="Index" style="width:7%; display:flex; flex-direction:row; align-items:center; text-decoration:none; color:#F6D524;">
+            <svg width="auto" height="22" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.4377 28.125C23.1891 28.125 22.9506 28.0262 22.7748 27.8504C22.599 27.6746 22.5002 27.4361 22.5002 27.1875V2.8125C22.5002 2.56386 22.599 2.3254 22.7748 2.14959C22.9506 1.97377 23.1891 1.875 23.4377 1.875C23.6863 1.875 23.9248 1.97377 24.1006 2.14959C24.2764 2.3254 24.3752 2.56386 24.3752 2.8125V27.1875C24.3752 27.4361 24.2764 27.6746 24.1006 27.8504C23.9248 28.0262 23.6863 28.125 23.4377 28.125ZM18.7502 15C18.7502 15.2486 18.6514 15.4871 18.4756 15.6629C18.2998 15.8387 18.0613 15.9375 17.8127 15.9375H6.95084L10.9765 19.9613C11.0636 20.0484 11.1328 20.1519 11.1799 20.2658C11.2271 20.3797 11.2514 20.5017 11.2514 20.625C11.2514 20.7483 11.2271 20.8703 11.1799 20.9842C11.1328 21.0981 11.0636 21.2016 10.9765 21.2887C10.8893 21.3759 10.7858 21.4451 10.6719 21.4922C10.558 21.5394 10.436 21.5637 10.3127 21.5637C10.1894 21.5637 10.0674 21.5394 9.95349 21.4922C9.8396 21.4451 9.73613 21.3759 9.64896 21.2887L4.02396 15.6637C3.93665 15.5767 3.86739 15.4732 3.82013 15.3593C3.77286 15.2454 3.74854 15.1233 3.74854 15C3.74854 14.8767 3.77286 14.7546 3.82013 14.6407C3.86739 14.5268 3.93665 14.4233 4.02396 14.3363L9.64896 8.71125C9.825 8.53521 10.0638 8.43632 10.3127 8.43632C10.5617 8.43632 10.8004 8.53521 10.9765 8.71125C11.1525 8.88729 11.2514 9.12605 11.2514 9.375C11.2514 9.62395 11.1525 9.86271 10.9765 10.0387L6.95084 14.0625H17.8127C18.0613 14.0625 18.2998 14.1613 18.4756 14.3371C18.6514 14.5129 18.7502 14.7514 18.7502 15Z" fill="#F6D524" />
+            </svg>
+            Voltar
+        </a>
+    </div>
+    <div style="width: 100%; height:5px; background:#f6d524;"> </div>
+</div>
 
 <div>
-    <h4>Aluno</h4>
-    <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Matricula)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Matricula)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.AlunoNome)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.AlunoNome)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Celular)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Celular)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Logradouro)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Logradouro)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Numero)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Numero)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Cidade)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Cidade)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Estado)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Estado)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.CEP)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.CEP)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.Senha)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.Senha)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.DataNascimento)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.DataNascimento)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.CadAtivo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.CadAtivo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.DataCadastro)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.DataCadastro)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.CadInativo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.CadInativo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.TipoUsuario)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.TipoUsuario.TipoUsuarioId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-2 textoBrancoForm">
             @Html.DisplayNameFor(model => model.UrlFoto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10 textoBrancoForm">
             @Html.DisplayFor(model => model.UrlFoto)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.AlunoId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.AlunoId">Editar</a>
 </div>

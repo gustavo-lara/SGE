@@ -255,7 +255,7 @@ namespace SGE.Controllers
                 .Include(u => u.Usuario)
                 .Include(to => to.TipoOcorrencia)
                 .Include(a => a.Aluno).ToList();
-                List<Alunos> listaAlunos = _context.Alunos.ToList();
+                List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
                 return View(ListaOcorrencias);
             }
@@ -272,7 +272,7 @@ namespace SGE.Controllers
                 List<Ocorrencia> ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).ToList();
                 if (filtro == null)
                 {
-                    List<Alunos> listaAlunos = _context.Alunos.ToList();
+                    List<Aluno> listaAlunos = _context.Alunos.ToList();
                     ViewData["listaAlunos"] = listaAlunos;
                     return RedirectToAction("ListaOcorrencias", ListaOcorrencias);
                 }
@@ -280,28 +280,28 @@ namespace SGE.Controllers
                 {
                     if (tipoBusca == 0)
                     {
-                        List<Alunos> listaAlunos = _context.Alunos.Where(a => a.AlunoNome.ToUpper().Contains(filtro.ToUpper())).ToList();
+                        List<Aluno> listaAlunos = _context.Alunos.Where(a => a.AlunoNome.ToUpper().Contains(filtro.ToUpper())).ToList();
                         ViewData["listaAlunos"] = listaAlunos;
                         ListaOcorrencias = ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).ToList();
                         return View("ListaOcorrencias", ListaOcorrencias);
                     }
                     else if (tipoBusca == 1)
                     {
-                        List<Alunos> listaAlunos = _context.Alunos.Where(a => a.Email.ToUpper().Contains(filtro.ToUpper())).ToList();
+                        List<Aluno> listaAlunos = _context.Alunos.Where(a => a.Email.ToUpper().Contains(filtro.ToUpper())).ToList();
                         ViewData["listaAlunos"] = listaAlunos;
                         ListaOcorrencias = ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).ToList();
                         return View("ListaOcorrencias", ListaOcorrencias);
                     }
                     else if (tipoBusca == 2)
                     {
-                        List<Alunos> listaAlunos = _context.Alunos.Where(a => a.Matricula.ToUpper().Contains(filtro.ToUpper())).ToList();
+                        List<Aluno> listaAlunos = _context.Alunos.Where(a => a.Matricula.ToUpper().Contains(filtro.ToUpper())).ToList();
                         ViewData["listaAlunos"] = listaAlunos;
                         ListaOcorrencias = ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).ToList();
                         return View("ListaOcorrencias", ListaOcorrencias);
                     }
                     else if (tipoBusca == 3)
                     {
-                        List<Alunos> listaAlunos = _context.Alunos.Where(a => a.Celular.Contains(filtro)).ToList();
+                        List<Aluno> listaAlunos = _context.Alunos.Where(a => a.Celular.Contains(filtro)).ToList();
                         ViewData["listaAlunos"] = listaAlunos;
                         ListaOcorrencias = ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).ToList();
                         return View("ListaOcorrencias", ListaOcorrencias);
@@ -319,7 +319,7 @@ namespace SGE.Controllers
             }
             else
             {
-                List<Alunos> listaAlunos = _context.Alunos.ToList();
+                List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
                 ViewData["idAluno"] = id;
                 ViewData["nomeAluno"] = _context.Alunos.Where(a => a.AlunoId == id).FirstOrDefault().AlunoNome;
@@ -336,7 +336,7 @@ namespace SGE.Controllers
             }
             else
             {
-                List<Alunos> listaAlunos = _context.Alunos.ToList();
+                List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
                 ViewData["alunoId"] = id;
                 ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == id).FirstOrDefault().AlunoNome;

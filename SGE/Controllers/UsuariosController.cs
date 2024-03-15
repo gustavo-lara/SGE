@@ -176,7 +176,7 @@ namespace SGE.Controllers
 
             if (usuario.TipoUsuarioId == _context.TiposUsuario.FirstOrDefault(a => a.Tipo == "Aluno").TipoUsuarioId)
             {
-                Alunos aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
+                Aluno aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
                 ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return RedirectToAction("Edit", "Alunos", new { id = aluno.AlunoId });
             }
@@ -202,30 +202,44 @@ namespace SGE.Controllers
             if (_context.Usuarios.FirstOrDefault(u => u.UsuarioNome == "Administrador").UsuarioId == id)
             {
                 ViewData["Erro"] = "Não é possível Editar o usuário Administrador";
-                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return View();
             }
 
+            if (usuario.Email != _context.Usuarios.Find(id).Email)
+            {
+                ModelState.AddModelError("Email", "A alteração do e-mail não é permitida.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+                return View(usuario);
+            }
+
+
+            if (_context.Usuarios.Any(u => u.Email == usuario.Email && u.UsuarioId != usuario.UsuarioId))
+            {
+                ModelState.AddModelError("Email", "Este e-mail já está cadastrado.");
+                ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
+                return View(usuario);
+            }
 
 
             if (ModelState.IsValid)
             {
+                Aluno aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
                 if (usuario.CadAtivo == false)
                 {
                     usuario.CadInativo = DateTime.Now;
+                    aluno.CadAtivo = false;
+                    aluno.CadInativo = DateTime.Now;
                 }
                 else
                 {
+                    aluno.CadAtivo = true;
                     usuario.CadInativo = null;
+                    aluno.CadInativo = null;
                 }
-
-                usuario.TipoUsuario = _context.TiposUsuario.Where(a => a.TipoUsuarioId == usuario.TipoUsuarioId).FirstOrDefault();
-                _context.Update(usuario);
-                await _context.SaveChangesAsync();
-
-                if (usuario.TipoUsuarioId == _context.TiposUsuario.FirstOrDefault(a => a.Tipo == "Aluno").TipoUsuarioId)
+                try
                 {
-                    Aluno aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
+                    usuario.TipoUsuario = _context.TiposUsuario.Where(a => a.TipoUsuarioId == usuario.TipoUsuarioId).FirstOrDefault();
                     aluno.Senha = usuario.Senha;
                     aluno.Celular = usuario.Celular;
                     aluno.AlunoNome = usuario.UsuarioNome;
@@ -233,28 +247,24 @@ namespace SGE.Controllers
                     aluno.TipoUsuarioId = usuario.TipoUsuarioId;
                     aluno.TipoUsuario = usuario.TipoUsuario;
 
-                    if (usuario.CadAtivo == false)
+                    _context.Update(usuario);
+                    _context.Alunos.Update(aluno);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsuarioExists(usuario.UsuarioId))
                     {
-                        usuario.CadInativo = DateTime.Now;
-                        aluno.CadAtivo = false;
-                        aluno.CadInativo = DateTime.Now;
+                        return NotFound();
                     }
                     else
                     {
-                        aluno.CadAtivo = true;
-                        usuario.CadInativo = null;
-                        aluno.CadInativo = null;
+                        throw;
                     }
-
-                    _context.Alunos.Update(aluno);
-                    await _context.SaveChangesAsync();
-                    _context.Update(usuario);
-                    await _context.SaveChangesAsync();
                 }
-
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "TipoUsuarioId", usuario.TipoUsuarioId);
+            ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
             return View(usuario);
         }
 

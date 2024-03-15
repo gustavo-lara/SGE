@@ -7,7 +7,7 @@ namespace SGE.Data
     {
         public SGEContext(DbContextOptions<SGEContext> options) : base(options)
         { }
-        public DbSet<Alunos> Alunos { get; set; }
+        public DbSet<Aluno> Alunos { get; set; }
         public DbSet<AlunoTurma> AlunosTurma { get; set; }
         public DbSet<ReservaSala> ReservasSala { get; set; }
         public DbSet<Sala> Salas { get; set; }
@@ -19,7 +19,7 @@ namespace SGE.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Alunos>().ToTable("Aluno");
+            modelBuilder.Entity<Aluno>().ToTable("Aluno");
             modelBuilder.Entity<AlunoTurma>().ToTable("AlunoTurma");
             modelBuilder.Entity<ReservaSala>().ToTable("ReservaSala");
             modelBuilder.Entity<Sala>().ToTable("Sala");

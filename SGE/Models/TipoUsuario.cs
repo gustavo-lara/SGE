@@ -10,6 +10,6 @@ namespace SGE.Models
         [StringLength(100, ErrorMessage = "O campo Usuario deve ter no " +
             "máximo 100 caracteres")]
         public string Tipo { get; set; }
-        public IEnumerable<Alunos>? Alunos { get; set; }
+        public IEnumerable<Aluno>? Alunos { get; set; }
     }
 }

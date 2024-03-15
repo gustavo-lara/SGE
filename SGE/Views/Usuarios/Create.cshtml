@@ -17,6 +17,9 @@
 	<div style="width: 100%; height:5px; background:#f6d524;"> </div>
 </div>
 
+<div>
+    <form asp-action="Create" class="d-flex row justify-content-between align-items-center" style="width:100%;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 <div class="row">
 	<div>
@@ -46,16 +49,30 @@
 			<form class="d-flex row justify-content-between align-items-end" style="width:100%;">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+        <div class="col-4 my-2">
+            <input asp-for="UsuarioNome" class="headerTabela textoHeaderTabela" placeholder="Nome do Usuário" />
+            <span asp-validation-for="UsuarioNome" class="text-danger"></span>
+        </div>
 				<div class="col-4 my-1">
 					<input asp-for="UsuarioNome" class="headerTabela textoHeaderTabela" placeholder="Nome do Usuário" />
 					<span asp-validation-for="UsuarioNome" class="text-danger"></span>
 				</div>
 
+        <div class="col-4 my-2">
+            <input asp-for="Email" class="headerTabela textoHeaderTabela" placeholder="Email do Usuário" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
 				<div class="col-4 my-1">
 					<input asp-for="Email" class="headerTabela textoHeaderTabela" placeholder="Email do Usuário" />
 					<span asp-validation-for="Email" class="text-danger"></span>
 				</div>
 
+        <div class="col-4 my-2">
+            <div class="d-flex flex-row">
+                <select asp-for="TipoUsuarioId" class="headerTabela textoHeaderTabela" asp-items="ViewBag.TipoUsuarioId"></select>
+                <button style="width:30%;" class=""> Novo Tipo </button>
+            </div>
+        </div>
 				<div class="col-4 my-1">
 					<div class="d-flex flex-row">
 						<select asp-for="TipoUsuarioId" class="headerTabela textoHeaderTabela" asp-items="ViewBag.TipoUsuarioId"></select>
@@ -63,26 +80,45 @@
 					</div>
 				</div>
 
+        <div class="col-2 my-2">
+            <input asp-for="Celular" class="headerTabela textoHeaderTabela" placeholder="Celular do Usuário" />
+            <span asp-validation-for="Celular" class="text-danger"></span>
+        </div>
 				<div class="col-2 my-1">
 					<input asp-for="Celular" class="headerTabela textoHeaderTabela" placeholder="Celular do Usuário" />
 					<span asp-validation-for="Celular" class="text-danger"></span>
 				</div>
 
+        <div class="col-3 my-2">
+            <input asp-for="Senha" class="headerTabela textoHeaderTabela" placeholder="Defina uma senha" />
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
 				<div class="col-3 my-1">
 					<input asp-for="Senha" class="headerTabela textoHeaderTabela" placeholder="Defina uma senha" />
 					<span asp-validation-for="Senha" class="text-danger"></span>
 				</div>
 
+        <div class="col-3 my-2">
+            <input id="ConfirmeSenha" type="password" name="ConfirmeSenha" class="headerTabela textoHeaderTabela" placeholder="Confirme sua senha" />
+        </div>
 				<div class="col-3 my-1">
 					<input id="ConfirmeSenha" type="password" name="ConfirmeSenha" class="headerTabela textoHeaderTabela" placeholder="Confirme sua senha" />
 				</div>
 
+        <div class="col-2 form-check my-2">
+            <label class="textoBrancoForm" style="height:100%; width:100%; align-items:center;">
+                <input class="form-check-input" asp-for="CadAtivo" value="true" /> @Html.DisplayNameFor(model => model.CadAtivo)
+            </label>
+        </div>
 				<div class="col-2 form-check my-1">
 					<label class="textoBrancoForm" style="height:100%; width:100%; align-items:center;">
 						<input class="form-check-input" asp-for="CadAtivo" value="true" /> @Html.DisplayNameFor(model => model.CadAtivo)
 					</label>
 				</div>
 
+        <div class="col-2 my-2">
+            <input type="submit" value="Cadastrar" class="btn botaoBranco2" style="width:100%;" />
+        </div>
 				<div class="col-2 my-1">
 					<input type="submit" value="Cadastrar" class="btn botaoBranco2" style="width:100%;" />
 				</div>

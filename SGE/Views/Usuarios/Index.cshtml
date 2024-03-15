@@ -1,116 +1,152 @@
 ﻿@model IEnumerable<SGE.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
 <div>
-    <div class="d-flex row justify-content-between my-5 mb-5">
-        <div style="width: 15%;">
-            <img src="https://placehold.co/200x150" />
-        </div>
-        <div style="width: 85%;" class="ps-5">
-            <div class="d-flex row align-items-center justify-content-between">
-                <h1 style="width:25%; font-size:3.2rem; color:#F6D524;">Usuários</h1>
-                <div style="height:5px; width:75%; background:#F6D524;" />
-            </div>
-            <p style="font-size:1.5rem; color:#fff;">Visualize quem tem acesso à ferramenta SGE</p>
-        </div>
-    </div>
+	<div class="d-flex row justify-content-between my-5">
+		<div style="width: 15%;">
+			<img src="/img/imgIndexUsuario.png" style="max-width:200px;" />
+		</div>
+		<div style="width: 85%;" class="ps-5">
+			<div class="d-flex row align-items-center justify-content-between">
+				<h1 style="width:25%; font-size:3.2rem; color:#F6D524;">Usuários</h1>
+				<div style="height:5px; width:75%; background:#F6D524;" />
+			</div>
+			<p style="font-size:1.5rem; color:#2E75D3;">Visualize quem tem acesso à ferramenta SGE</p>
+		</div>
+	</div>
 
-    <div class="d-flex row justify-content-between mt-5" style="width:100%;">
-        <div style="width:40%;">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 style="font-size:2rem; color:#fff;">Tipos de Usuários</h2>
-                <a class="btn" asp-action="Create" asp-controller="TiposUsuario"><svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg></a>
-            </div>
-            <div>
-                Tabela
-            </div>
-        </div>
-        <div style="width:55%;">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 style="font-size:2rem; color:#fff;">Usuários Cadastrados</h2>
-                <a class="btn" asp-action="Create"><svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg></a>
-            </div>
-            <div>
-                Barra de pesquisa
-            </div>
-            <div>
-                Tabela
-            </div>
-        </div>
-    </div>
+	<div class="d-flex row justify-content-between" style="width:100%;">
+		<div style="width:40%;">
+			<div class="d-flex justify-content-between">
+				<h2 style="font-size:2rem; color:#2E75D3;">Tipos de Usuários</h2>
+				<button class="btn">
+					<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#2e75d3"></svg>
+				</button>
+			</div>
+			<table class="tabela1 table-borderless">
+				<thead>
+					<tr>
+						<th style="padding:0.7em;">
+							@Html.DisplayNameFor(model => model.TipoUsuario.Tipo)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="table-bordered">
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td style="padding:0.7em;">
+								@Html.DisplayFor(modelItem => item.TipoUsuario.Tipo)
+							</td>
+							<td>
+								<a class="btn btn-outline-success me-3" asp-action="Edit" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+								<a class="btn btn-outline-info me-3" asp-action="Details" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+								<a class="btn btn-outline-danger me-3" asp-action="Delete" asp-controller="TiposUsuario" asp-route-id="@item.TipoUsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+		<div style="width:55%;">
+			<div class="d-flex justify-content-between">
+				<h2 style="font-size:2rem; color:#2E75D3;">Usuários Cadastrados</h2>
+				<button class="btn">
+					<a asp-action="Create">
+
+						<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#2e75d3"></svg>
+					</a>
+				</button>
+			</div>
+			<div>
+				<div>
+					<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar aluno" />
+				</div>
+				<div>
+					<table class="tabela2Cabeca table-borderless">
+						<thead>
+							<tr style="padding:0.7em;">
+								<th style="padding:0.7em;">
+									@Html.DisplayNameFor(model => model.UsuarioNome)
+								</th>
+								<th style="padding:0.7em;">
+									@Html.DisplayNameFor(model => model.Email)
+								</th>
+								@* 			<th style="padding:0.5em">
+								@Html.DisplayNameFor(model => model.Senha)
+								</th> *@
+								<th style="padding:0.7em;">
+									@Html.DisplayNameFor(model => model.Celular)
+								</th>
+								@* 			<th style="padding:0.5em">
+								@Html.DisplayNameFor(model => model.CadAtivo)
+								</th> *@
+								<th style="padding:0.7em;">
+									@Html.DisplayNameFor(model => model.DataCadastro)
+								</th>
+								@* 			<th style="padding:0.5em">
+								@Html.DisplayNameFor(model => model.CadInativo)
+								</th> *@
+								<th style="padding:0.7em;">
+									@Html.DisplayNameFor(model => model.TipoUsuario)
+								</th>
+							</tr>
+						</thead>
+						<tbody class="tabela2 table-bordered">
+							@foreach (var item in Model)
+							{
+								<tr style="padding:0.7em;">
+									<td style="padding:0.7em;">
+										@Html.DisplayFor(modelItem => item.UsuarioNome)
+									</td>
+									<td style="padding:0.7em;">
+										@Html.DisplayFor(modelItem => item.Email)
+									</td>
+									@* 				<td>
+								@Html.DisplayFor(modelItem => item.Senha)
+								</td> *@
+									<td style="padding:0.7em;">
+										@Html.DisplayFor(modelItem => item.Celular)
+									</td>
+									@* 				<td>
+								@Html.DisplayFor(modelItem => item.CadAtivo)
+								</td> *@
+									<td style="padding:0.7em;">
+										@Html.DisplayFor(modelItem => item.DataCadastro)
+									</td>
+									@* 				<td>
+								@Html.DisplayFor(modelItem => item.CadInativo)
+								</td> *@
+									<td style="padding:0.7em;">
+										@Html.DisplayFor(modelItem => item.TipoUsuario.Tipo)
+									</td>
+
+									<td style="padding:0.4em;">
+										<div style="padding:0.2em;">
+											<a class="btn btn-outline-success me-3" asp-action="Edit" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+										</div>
+
+										<div style="padding:0.2em;">
+											<a class="btn btn-outline-info me-3" asp-action="Details" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+										</div>
+
+										<div style="padding:0.2em;">
+											<a class="btn btn-outline-danger me-3" asp-action="Delete" asp-route-id="@item.UsuarioId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+										</div>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioNome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Senha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Celular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CadAtivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CadInativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoUsuario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UsuarioNome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Senha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Celular)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CadAtivo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CadInativo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoUsuario.Tipo)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.UsuarioId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.UsuarioId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.UsuarioId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div style="display:flex; width:100%">
+</div>

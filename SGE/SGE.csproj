@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Ocorrencias\AdicionarOcorrencia - Cópia.cshtml" />
+    <Content Remove="wwwroot\img\Group 4.png" />
   </ItemGroup>
 
   <ItemGroup>

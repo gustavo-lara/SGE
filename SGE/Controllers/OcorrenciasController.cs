@@ -257,6 +257,10 @@ namespace SGE.Controllers
                 .Include(a => a.Aluno).ToList();
                 List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
+
+                List<TipoOcorrencia> tiposOcorrencia = _context.TiposOcorrencia.ToList();
+                ViewData["tiposOcorrencia"] = tiposOcorrencia;
+
                 return View(ListaOcorrencias);
             }
         }
@@ -321,6 +325,9 @@ namespace SGE.Controllers
             {
                 List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
+                List<TipoOcorrencia> tiposOcorrencia = _context.TiposOcorrencia.ToList();
+                ViewData["tiposOcorrencia"] = tiposOcorrencia;
+
                 ViewData["idAluno"] = id;
                 ViewData["nomeAluno"] = _context.Alunos.Where(a => a.AlunoId == id).FirstOrDefault().AlunoNome;
                 List<Ocorrencia> ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).Where(a => a.AlunoId == id).ToList();
@@ -338,6 +345,8 @@ namespace SGE.Controllers
             {
                 List<Aluno> listaAlunos = _context.Alunos.ToList();
                 ViewData["listaAlunos"] = listaAlunos;
+                List<TipoOcorrencia> tiposOcorrencia = _context.TiposOcorrencia.ToList();
+                ViewData["tiposOcorrencia"] = tiposOcorrencia;
                 ViewData["alunoId"] = id;
                 ViewData["alunoNome"] = _context.Alunos.Where(a => a.AlunoId == id).FirstOrDefault().AlunoNome;
                 ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaNome");
@@ -349,39 +358,44 @@ namespace SGE.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AdicionarOcorrencia([Bind("OcorrenciaId,TipoOcorrenciaId,UsuarioId,DataOcorrencia,Descricao,CadAtivo,CadInativo,Finalizado,DataFinalizado,AlunoId,Tratativa")] Ocorrencia Ocorrencia, string AlunoNome, string UsuarioNome)
+        public async Task<IActionResult> AdicionarOcorrencia([Bind("OcorrenciaId,TipoOcorrencia,TipoOcorrenciaId,Usuario,UsuarioId,DataOcorrencia,Descricao,CadAtivo,CadInativo,Finalizado,DataFinalizado,Aluno,AlunoId,Tratativa")] Ocorrencia Ocorrencia, string AlunoNome, string UsuarioNome)
         {
-            if (ModelState.IsValid)
-            {
-                if (Ocorrencia.DataOcorrencia == null)
-                {
-                    Ocorrencia.DataOcorrencia = DateTime.Now;
-                }
 
-                if (Ocorrencia.CadAtivo == false)
-                {
-                    Ocorrencia.CadInativo = DateTime.Now;
-                }
-                else
-                {
-                    Ocorrencia.CadInativo = null;
-                }
-                if (Ocorrencia.Finalizado == true)
-                {
-                    Ocorrencia.DataFinalizado = DateTime.Now;
-                }
-                else
-                {
-                    Ocorrencia.DataFinalizado = null;
-                }
-                Ocorrencia.OcorrenciaId = Guid.NewGuid();
-                _context.Add(Ocorrencia);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("OcorrenciasAluno", new { id = Ocorrencia.AlunoId });
+
+            if (Ocorrencia.DataOcorrencia == null)
+            {
+                Ocorrencia.DataOcorrencia = DateTime.Now;
             }
-            ViewData["TipoOcorrenciaId"] = new SelectList(_context.TiposOcorrencia, "TipoOcorrenciaId", "TipoOcorrenciaId", Ocorrencia.TipoOcorrenciaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "UsuarioId", Ocorrencia.UsuarioId);
-            return View(Ocorrencia);
+
+            if (Ocorrencia.CadAtivo == false)
+            {
+                Ocorrencia.CadInativo = DateTime.Now;
+            }
+            else
+            {
+                Ocorrencia.CadInativo = null;
+            }
+            if (Ocorrencia.Finalizado == true)
+            {
+                Ocorrencia.DataFinalizado = DateTime.Now;
+            }
+            else
+            {
+                Ocorrencia.DataFinalizado = null;
+            }
+            Ocorrencia.OcorrenciaId = Guid.NewGuid();
+            _context.Add(Ocorrencia);
+            await _context.SaveChangesAsync();
+            List<Aluno> listaAlunos = _context.Alunos.ToList();
+            ViewData["listaAlunos"] = listaAlunos;
+            List<TipoOcorrencia> tiposOcorrencia = _context.TiposOcorrencia.ToList();
+            ViewData["tiposOcorrencia"] = tiposOcorrencia;
+
+            ViewData["idAluno"] = Ocorrencia.AlunoId;
+            ViewData["nomeAluno"] = _context.Alunos.Where(a => a.AlunoId == Ocorrencia.AlunoId).FirstOrDefault().AlunoNome;
+            List<Ocorrencia> ListaOcorrencias = _context.Ocorrencias.Include(u => u.Usuario).Include(to => to.TipoOcorrencia).Include(a => a.Aluno).Where(a => a.AlunoId == Ocorrencia.AlunoId).ToList();
+            return View("ListaOcorrencias", ListaOcorrencias);
+
         }
 
 

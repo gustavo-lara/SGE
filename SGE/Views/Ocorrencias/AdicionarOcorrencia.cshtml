@@ -39,7 +39,7 @@
                 <input for="AlunoNome" name="AlunoNome" id="AlunoNome" class="headerTabela textoHeaderTabela" value="@ViewData["alunoNome"]" readonly />
             </div>
             <div class="col-4 my-2">
-                <input asp-for="Descricao" class="headerTabela textoHeaderTabela" placeholder="Adicione a descrição"/>
+                <input asp-for="Descricao" class="headerTabela textoHeaderTabela" placeholder="Adicione a descrição" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="col-4 my-2">
@@ -47,13 +47,13 @@
                 <span asp-validation-for="Tratativa" class="text-danger"></span>
             </div>
             <div class="col-1 my-2 textoBrancoForm">
-                <input asp-for="CadAtivo" checked="checked" type="hidden" /> @Html.DisplayNameFor(model => model.CadAtivo)
+                <input asp-for="CadAtivo" checked="checked" value="true" type="hidden" /> @Html.DisplayNameFor(model => model.CadAtivo)
             </div>
             <div class="col-1 my-2 textoBrancoForm">
-                <input asp-for="Finalizado" type="hidden" /> @Html.DisplayNameFor(model => model.Finalizado)
+                <input asp-for="Finalizado" type="hidden" value="false" /> @Html.DisplayNameFor(model => model.Finalizado)
             </div>
             <div class="col-2 my-2">
-                <input type="submit" value="Adicionar" class="btn botaoBranco2" style="width:100%;"/>
+                <input type="submit" value="Adicionar" class="btn botaoBranco2" style="width:100%;" />
             </div>
 
             <div>
@@ -68,6 +68,7 @@
             <div>
                 <input asp-for="DataFinalizado" class="form-control" type="hidden" />
             </div>
+
         </form>
     </div>
 </div>

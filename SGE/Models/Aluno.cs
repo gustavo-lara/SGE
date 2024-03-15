@@ -53,6 +53,7 @@ namespace SGE.Models
         public DateTime DataCadastro { get; set; }
         public DateTime? CadInativo { get; set; }
         public Guid? TipoUsuarioId { get; set; }
+        [Display(Name = "Tipo Usuario")]
         public TipoUsuario? TipoUsuario { get; set; }
         public string? UrlFoto { get; set; }
         public ICollection<AlunoTurma>? AlunoTurmas { get; set; }

@@ -176,7 +176,7 @@ namespace SGE.Controllers
 
             if (usuario.TipoUsuarioId == _context.TiposUsuario.FirstOrDefault(a => a.Tipo == "Aluno").TipoUsuarioId)
             {
-                Aluno aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
+                Alunos aluno = _context.Alunos.Where(a => a.Email == usuario.Email).FirstOrDefault();
                 ViewData["TipoUsuarioId"] = new SelectList(_context.TiposUsuario, "TipoUsuarioId", "Tipo", usuario.TipoUsuarioId);
                 return RedirectToAction("Edit", "Alunos", new { id = aluno.AlunoId });
             }

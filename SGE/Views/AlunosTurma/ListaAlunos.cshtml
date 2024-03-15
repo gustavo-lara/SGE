@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Alunos por Turma";
-    List<Aluno> listaAlunos = (List<Aluno>)ViewData["Alunos"];
+    List<Alunos> listaAlunos = (List<Alunos>)ViewData["Alunos"];
     List<Turma> listaTurmas = (List<Turma>)ViewData["Turmas"];
-    List<Aluno> alunosDaTurma = (List<Aluno>)ViewData["AlunosDaTurma"];
+    List<Alunos> alunosDaTurma = (List<Alunos>)ViewData["AlunosDaTurma"];
 }
 
 
@@ -39,10 +39,9 @@
                 </svg>
             </a>
             <h3>|</h3>
-            <form>
+            <form method="post" asp-action="FiltarTurmas">
                 <input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;"  type="text" class="form-control" name="filtro"
-                           placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"
-                           aria-describedby="button-addon2" />
+                     placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"aria-describedby="button-addon2"       />
             </form>
             </div>
     </div>
@@ -59,19 +58,7 @@
             </div>
         </div>
     }
-    <div class="row">
-        <div class="col-12">
-            <form method="post" asp-action="FiltarTurmas">
-                <div class="input-group mb-1">
-                    <input type="text" class="form-control" name="filtro"
-                           placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"
-                           aria-describedby="button-addon2" style="background: rgba(255, 255, 255, 0.3);  border: 2px solid white">
-                    <button class="btn btn-dark" type="submit" id="button-addon2">
-                        <svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar"></svg>
-                    </button>
-                </div>
-            </form>
-        </div>
+  
     </div>
     <div class="row">
         <div class="col-12 overflow-auto">

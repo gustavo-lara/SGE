@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace SGE.Models
 {
-    public class Aluno
+    public class Alunos
     {
         public Guid AlunoId { get; set; }
 

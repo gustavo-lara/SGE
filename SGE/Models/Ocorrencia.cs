@@ -5,6 +5,7 @@ namespace SGE.Models
     public class Ocorrencia
     {
         public Guid OcorrenciaId { get; set; }
+        [Display(Name = "Tipo de Ocorrencia")]
         public Guid TipoOcorrenciaId { get; set; }
         [Display(Name = "Tipo de Ocorrencia")]
         [Required(ErrorMessage = "O campo Tipo de Ocorrencia é obrigatório")]
@@ -21,6 +22,8 @@ namespace SGE.Models
         [StringLength(100, ErrorMessage = "O campo Nome deve ter no " +
             "máximo 100 caracteres")]
         public Aluno? Aluno { get; set; }
+
+        [Display(Name = "Data da Ocorrenciq")]
         public DateTime DataOcorrencia { get; set; }
         public string Descricao { get; set; }
         public bool CadAtivo { get; set; }

@@ -252,7 +252,7 @@ namespace SGE.Controllers
                     ViewData["TipoUsuarioId"] = idTipoUser;
                     return View(aluno);
                 }
-                Usuario usuario = _context.Usuarios.Where(a => a.Email == aluno.Email).FirstOrDefault();
+                Usuario usuario = _context.Usuarios.Where(a => a.Email == _context.Alunos.Where(a => a.AlunoId == aluno.AlunoId).FirstOrDefault().Email).FirstOrDefault();
                 if (aluno.CadAtivo == false)
                 {
                     aluno.CadInativo = DateTime.Now;
@@ -274,7 +274,6 @@ namespace SGE.Controllers
                     usuario.TipoUsuarioId = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault().TipoUsuarioId;
                     usuario.TipoUsuario = _context.TiposUsuario.Where(a => a.Tipo == "Aluno").FirstOrDefault();
                     _context.Alunos.Update(aluno);
-                    await _context.SaveChangesAsync();
                     _context.Usuarios.Update(usuario);
                     await _context.SaveChangesAsync();
 

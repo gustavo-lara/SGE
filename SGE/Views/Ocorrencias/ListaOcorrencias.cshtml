@@ -18,6 +18,7 @@
 <h1>Boletim de Ocorrências</h1>
 <p>
     <a asp-controller="TiposOcorrencia" asp-action="Create">Tipos </a>
+
 </p>
 <div class="container">
     @if (ViewData["Erro"] != null)
@@ -59,6 +60,7 @@
     {
         <div class="row mt-3">
             <div class="col-12 h-25 overflow-auto">
+
                 <table class="table table-sm">
                     <thead>
                         <tr>
@@ -100,8 +102,43 @@
                                 </td>
                             </tr>
                         }
-                    </tbody>
-                </table>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TipoOcorrencia.TipoOcorrenciaNome)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CadAtivo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CadInativo)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TipoOcorrencia.TipoOcorrenciaNome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CadAtivo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CadInativo)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.TipoOcorrenciaId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.TipoOcorrenciaId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.TipoOcorrenciaId">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
             </div>
         </div>
     }
@@ -120,6 +157,7 @@
         </div>
         <div class="row mt-3">
             <div class="col-12 h-50 overflow-auto">
+
                 <table class="table table-sm">
                     <thead>
                         <tr>

@@ -13,28 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TipoOcorrencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataOcorrencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
+                @Html.DisplayNameFor(model => model.TipoOcorrencia.TipoOcorrenciaNome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CadAtivo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CadInativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Finalizado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFinalizado)
             </th>
             <th></th>
         </tr>
@@ -44,16 +29,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TipoOcorrencia.TipoOcorrenciaId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataOcorrencia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
+                    @Html.DisplayFor(modelItem => item.TipoOcorrencia.TipoOcorrenciaNome)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CadAtivo)
@@ -62,17 +38,77 @@
                     @Html.DisplayFor(modelItem => item.CadInativo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Finalizado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataFinalizado)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.OcorrenciaId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.OcorrenciaId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.OcorrenciaId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.TipoOcorrenciaId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TipoOcorrenciaId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TipoOcorrenciaId">Delete</a>
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoOcorrencia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataOcorrencia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CadAtivo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CadInativo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Finalizado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataFinalizado)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoOcorrencia.TipoOcorrenciaId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataOcorrencia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CadAtivo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CadInativo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Finalizado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataFinalizado)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.OcorrenciaId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.OcorrenciaId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.OcorrenciaId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>

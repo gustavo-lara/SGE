@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Alunos por Turma";
-    List<Aluno> listaAlunos = (List<Aluno>)ViewData["Alunos"];
+    List<Alunos> listaAlunos = (List<Alunos>)ViewData["Alunos"];
     List<Turma> listaTurmas = (List<Turma>)ViewData["Turmas"];
-    List<Aluno> alunosDaTurma = (List<Aluno>)ViewData["AlunosDaTurma"];
+    List<Alunos> alunosDaTurma = (List<Alunos>)ViewData["AlunosDaTurma"];
 }
 
 
@@ -39,10 +39,9 @@
                 </svg>
             </a>
             <h3>|</h3>
-            <form>
+            <form method="post" asp-action="FiltarTurmas">
                 <input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;"  type="text" class="form-control" name="filtro"
-                           placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"
-                           aria-describedby="button-addon2" />
+                     placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"aria-describedby="button-addon2"       />
             </form>
             </div>
     </div>
@@ -65,8 +64,8 @@
                 <div class="input-group mb-1">
                     <input type="text" class="form-control" name="filtro"
                            placeholder="Pesquisar por Turma" aria-label="Pesquisar por Turma"
-                           aria-describedby="button-addon2" style="background: rgba(255, 255, 255, 0.3);  border: 2px solid white">
-                    <button class="btn btn-dark" type="submit" id="button-addon2">
+                           aria-describedby="button-addon2" style="background: rgba(255, 255, 255, 0.3); color:white ;border: 2px solid white">
+                    <button class="btn btn-light" type="submit" id="button-addon2">
                         <svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar"></svg>
                     </button>
                 </div>
@@ -75,7 +74,7 @@
     </div>
     <div class="row">
         <div class="col-12 overflow-auto">
-            <table class="table-borderless tabela1">
+            <table class="table-borderless tabela1" style="color:white">
                 <thead>
                     <tr style="padding: 0.3em ">
                         <th style="padding: 0.3em">
@@ -87,12 +86,12 @@
                         <th>
                             Série
                         </th style="padding: 0.3em">
-                        <th class="text-end"  style="padding: 0.3em">
+                        <th class="text-end"  style="padding: 0.45em 1.2em">
                             Selecionar
                         </th>
                     </tr>
                 </thead>
-                <tbody  class="table-bordered">
+                <tbody  class="table-bordered" style="color:white; font-weight:600">
                     @foreach (var item in listaTurmas)
                     {
                         <tr style="padding: 0.3em ">
@@ -106,8 +105,8 @@
                                 @item.Serie
                             </td>
                           
-                            <td style="padding: 0.3em " class="text-end">
-                                <a asp-action="SelecionaTurma" asp-route-id="@item.TurmaId" class="btn btn-outline-light" >Selecionar</a>
+                            <td style="padding: 0.4em 0.4em " class="text-end">
+                                <a asp-action="SelecionaTurma" asp-route-id="@item.TurmaId" class="btn btn-outline-light" style="border: 2px solid white; font-weight:550" >Selecionar</a>
                             </td>
                         </tr>
                     }
@@ -118,7 +117,7 @@
     <div class="row">
         <div class="col-5">
             <h2 style="color:white">Alunos Disponíveis</h2>
-            <table class="table-borderless tabela1">
+            <table class="table-borderless tabela1"  style="color:white;">
                 <thead>
                     <tr style="padding: 0.3em ">
                         <th style="padding: 0.3em ">
@@ -132,7 +131,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody  class="table-bordered">
+                <tbody  class="table-bordered"  style="color:white; font-weight:600">
 
                     @foreach (var item in listaAlunos)
                     {
@@ -147,7 +146,7 @@
                                 <form id="AddAlunos" asp-action="AdicionaAlunoTurma">
                                     <input type="hidden" name="idAluno" value="@item.AlunoId" />
                                     <input type="hidden" name="idTurma" value="@ViewData["TurmaId"]" />
-                                    <input class="btn btn-outline-light" type="submit" name="btnAdd" value="+ Add" />
+                                    <input class="btn btn-outline-light" type="submit" name="btnAdd" style="border: 2px solid white; font-weight:550" value="+ Add" />
                                 </form>
                             </td>
                         </tr>
@@ -167,7 +166,7 @@
                     <strong>@ViewData["TurmaSelecionada"]</strong>
                 }
             </h2>
-            <table class="table-borderless tabela1">
+            <table class="table-borderless tabela1"  style="color:white;>
                 <thead>
 
                     <tr style="padding: 0.3em ">
@@ -182,7 +181,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody  class="table-bordered">
+                <tbody  class="table-bordered"  style="color:white; font-weight:600">
                     @if (alunosDaTurma != null)
                     {
 

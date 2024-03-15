@@ -1,149 +1,149 @@
 ﻿@model IEnumerable<SGE.Models.Aluno>
 
 @{
-    ViewData["Title"] = "Index";
-    if (Context.Session.GetString("email") != null)
-    {
-        var sessionEmail = Context.Session.GetString("email");
-        var sessionNome = Context.Session.GetString("usuario");
-        var sessionTipoUsuarioId = Context.Session.GetString("tipo");
-    }
+	ViewData["Title"] = "Index";
+	if (Context.Session.GetString("email") != null)
+	{
+		var sessionEmail = Context.Session.GetString("email");
+		var sessionNome = Context.Session.GetString("usuario");
+		var sessionTipoUsuarioId = Context.Session.GetString("tipo");
+	}
 
 
 }
 <div>
-    <div class="d-flex row justify-content-between my-5">
-        <div style="width: 15%;">
-            <img src="/img/imgIndexAlunos.png" style="max-width:200px;" />
-        </div>
-        <div style="width: 85%;" class="ps-5">
-            <div class="d-flex row align-items-center justify-content-between">
-                <h1 style="width:21%; font-size:3.2rem; color:#F6D524;">Alunos</h1>
-                <div style="height:5px; width:79%; background:#F6D524;" />
-            </div>
-            <p style="font-size:1.5rem; color:#fff;">Gerencie os alunos cadastrados, registre novos alunos, edite ou delete informações. </p>
-        </div>
-    </div>
+	<div class="d-flex row justify-content-between my-5">
+		<div style="width: 15%;">
+			<img src="/img/imgIndexAlunos.png" style="max-width:200px;" />
+		</div>
+		<div style="width: 85%;" class="ps-5">
+			<div class="d-flex row align-items-center justify-content-between">
+				<h1 style="width:21%; font-size:3.2rem; color:#F6D524;">Alunos</h1>
+				<div style="height:5px; width:79%; background:#F6D524;" />
+			</div>
+			<p style="font-size:1.5rem; color:#fff;">Gerencie os alunos cadastrados, registre novos alunos, edite ou delete informações. </p>
+		</div>
+	</div>
 
-    @*     <div class="d-flex justify-content-between" style="width:100%;">
-    <div>
-    <div style="width:40%;">
+	@*     <div class="d-flex justify-content-between" style="width:100%;">
+	<div>
+	<div style="width:40%;">
 
-    </div>
-    <div style="width:60%;">
-    Barra de Pesquisa
-    </div>
-    </div>
-    <div>
+	</div>
+	<div style="width:60%;">
+	Barra de Pesquisa
+	</div>
+	</div>
+	<div>
 
-    </div>
-    </div>
-    </div> *@
+	</div>
+	</div>
+	</div> *@
 
-    <div class="tableAlunosTop">
-        <h3>Alunos cadastrados</h3>
-        <div style="display:flex; align-items:center; justify-content:center; gap:3em;">
-            <a asp-action="Create">
-                <svg width="35" height="35" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_166_1154)">
-                        <path d="M39.375 2.8125C40.1209 2.8125 40.8363 3.10882 41.3637 3.63626C41.8912 4.16371 42.1875 4.87908 42.1875 5.625V39.375C42.1875 40.1209 41.8912 40.8363 41.3637 41.3637C40.8363 41.8912 40.1209 42.1875 39.375 42.1875H5.625C4.87908 42.1875 4.16371 41.8912 3.63626 41.3637C3.10882 40.8363 2.8125 40.1209 2.8125 39.375V5.625C2.8125 4.87908 3.10882 4.16371 3.63626 3.63626C4.16371 3.10882 4.87908 2.8125 5.625 2.8125H39.375ZM5.625 0C4.13316 0 2.70242 0.592632 1.64752 1.64752C0.592632 2.70242 0 4.13316 0 5.625L0 39.375C0 40.8668 0.592632 42.2976 1.64752 43.3525C2.70242 44.4074 4.13316 45 5.625 45H39.375C40.8668 45 42.2976 44.4074 43.3525 43.3525C44.4074 42.2976 45 40.8668 45 39.375V5.625C45 4.13316 44.4074 2.70242 43.3525 1.64752C42.2976 0.592632 40.8668 0 39.375 0L5.625 0Z" fill="white" />
-                        <path d="M22.5 11.25C22.873 11.25 23.2306 11.3982 23.4944 11.6619C23.7581 11.9256 23.9062 12.2833 23.9062 12.6562V21.0938H32.3438C32.7167 21.0938 33.0744 21.2419 33.3381 21.5056C33.6018 21.7694 33.75 22.127 33.75 22.5C33.75 22.873 33.6018 23.2306 33.3381 23.4944C33.0744 23.7581 32.7167 23.9062 32.3438 23.9062H23.9062V32.3438C23.9062 32.7167 23.7581 33.0744 23.4944 33.3381C23.2306 33.6018 22.873 33.75 22.5 33.75C22.127 33.75 21.7694 33.6018 21.5056 33.3381C21.2419 33.0744 21.0938 32.7167 21.0938 32.3438V23.9062H12.6562C12.2833 23.9062 11.9256 23.7581 11.6619 23.4944C11.3982 23.2306 11.25 22.873 11.25 22.5C11.25 22.127 11.3982 21.7694 11.6619 21.5056C11.9256 21.2419 12.2833 21.0938 12.6562 21.0938H21.0938V12.6562C21.0938 12.2833 21.2419 11.9256 21.5056 11.6619C21.7694 11.3982 22.127 11.25 22.5 11.25Z" fill="white" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_166_1154">
-                            <rect width="45" height="45" fill="white" />
-                        </clipPath>
-                    </defs>
-                </svg>
-            </a>
-        <h3>|</h3>
-        <input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar aluno" />
-        </div>
-    </div>
-
-
+	<div class="tableAlunosTop">
+		<h3>Alunos cadastrados</h3>
+		<div style="display:flex; align-items:center; justify-content:center; gap:3em;">
+			<a asp-action="Create">
+				<svg width="35" height="35" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0_166_1154)">
+						<path d="M39.375 2.8125C40.1209 2.8125 40.8363 3.10882 41.3637 3.63626C41.8912 4.16371 42.1875 4.87908 42.1875 5.625V39.375C42.1875 40.1209 41.8912 40.8363 41.3637 41.3637C40.8363 41.8912 40.1209 42.1875 39.375 42.1875H5.625C4.87908 42.1875 4.16371 41.8912 3.63626 41.3637C3.10882 40.8363 2.8125 40.1209 2.8125 39.375V5.625C2.8125 4.87908 3.10882 4.16371 3.63626 3.63626C4.16371 3.10882 4.87908 2.8125 5.625 2.8125H39.375ZM5.625 0C4.13316 0 2.70242 0.592632 1.64752 1.64752C0.592632 2.70242 0 4.13316 0 5.625L0 39.375C0 40.8668 0.592632 42.2976 1.64752 43.3525C2.70242 44.4074 4.13316 45 5.625 45H39.375C40.8668 45 42.2976 44.4074 43.3525 43.3525C44.4074 42.2976 45 40.8668 45 39.375V5.625C45 4.13316 44.4074 2.70242 43.3525 1.64752C42.2976 0.592632 40.8668 0 39.375 0L5.625 0Z" fill="white" />
+						<path d="M22.5 11.25C22.873 11.25 23.2306 11.3982 23.4944 11.6619C23.7581 11.9256 23.9062 12.2833 23.9062 12.6562V21.0938H32.3438C32.7167 21.0938 33.0744 21.2419 33.3381 21.5056C33.6018 21.7694 33.75 22.127 33.75 22.5C33.75 22.873 33.6018 23.2306 33.3381 23.4944C33.0744 23.7581 32.7167 23.9062 32.3438 23.9062H23.9062V32.3438C23.9062 32.7167 23.7581 33.0744 23.4944 33.3381C23.2306 33.6018 22.873 33.75 22.5 33.75C22.127 33.75 21.7694 33.6018 21.5056 33.3381C21.2419 33.0744 21.0938 32.7167 21.0938 32.3438V23.9062H12.6562C12.2833 23.9062 11.9256 23.7581 11.6619 23.4944C11.3982 23.2306 11.25 22.873 11.25 22.5C11.25 22.127 11.3982 21.7694 11.6619 21.5056C11.9256 21.2419 12.2833 21.0938 12.6562 21.0938H21.0938V12.6562C21.0938 12.2833 21.2419 11.9256 21.5056 11.6619C21.7694 11.3982 22.127 11.25 22.5 11.25Z" fill="white" />
+					</g>
+					<defs>
+						<clipPath id="clip0_166_1154">
+							<rect width="45" height="45" fill="white" />
+						</clipPath>
+					</defs>
+				</svg>
+			</a>
+			<h3>|</h3>
+			<input style="width:40em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar aluno" />
+		</div>
+	</div>
 
 
-    <table class="tabelaAluno">
-        <thead style="background: rgba(255, 255, 255, 0.32);border-radius: 5px;">
 
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.UrlFoto)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AlunoNome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Matricula)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Celular)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataNascimento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CadAtivo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CadInativo)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @{
-                            // Verifica se a imagem existe
-                            var filePath = Directory.GetCurrentDirectory() + "\\Data\\Content\\Photo\\" +
-                            item.UrlFoto;
-                            if (System.IO.File.Exists(filePath))
-                            {
-                                // Carrega a imagem em memória
-                                var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
-                                var imageBase64 = Convert.ToBase64String(imageBytes);
 
-                                // Exibe a imagem na view
-                                <img src="data:image/png;base64,@imageBase64"
-                                     alt="Foto do Perfil" height="50" width="50" style="object-fit:cover" />
-                            }
-                        }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AlunoNome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Matricula)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Celular)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataNascimento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CadAtivo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CadInativo)
-                    </td>
+	<table class="table-borderless tabelaAluno" style="color:white;">
+		<thead style="border-radius: 5px ;color:white; font-weight:600">
 
-                    <td>
-                        <a class="text-dark" asp-action="Edit" asp-route-id="@item.AlunoId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
-                        <a class="text-dark" asp-action="Details" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
-                        <a class="text-dark" asp-action="Delete" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.UrlFoto)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.AlunoNome)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Matricula)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Email)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Celular)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.DataNascimento)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.CadAtivo)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.CadInativo)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody class="table-bordered" style="color:white; font-weight:600">
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@{
+							// Verifica se a imagem existe
+							var filePath = Directory.GetCurrentDirectory() + "\\Data\\Content\\Photo\\" +
+							item.UrlFoto;
+							if (System.IO.File.Exists(filePath))
+							{
+								// Carrega a imagem em memória
+								var imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+								var imageBase64 = Convert.ToBase64String(imageBytes);
+
+								// Exibe a imagem na view
+								<img src="data:image/png;base64,@imageBase64"
+									 alt="Foto do Perfil" height="50" width="50" style="object-fit:cover" />
+							}
+						}
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.AlunoNome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Matricula)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Celular)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.DataNascimento)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.CadAtivo)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.CadInativo)
+					</td>
+
+					<td>
+						<a class="text-dark" asp-action="Edit" asp-route-id="@item.AlunoId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
+						<a class="text-dark" asp-action="Details" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
+						<a class="text-dark" asp-action="Delete" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>

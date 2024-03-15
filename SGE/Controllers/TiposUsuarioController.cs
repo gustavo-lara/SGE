@@ -56,7 +56,7 @@ namespace SGE.Controllers
                 {
                     return RedirectToAction("AcessoNegado", "Home");
                 }
-            }            
+            }
 
             if (id == null)
             {
@@ -94,7 +94,7 @@ namespace SGE.Controllers
             return View();
         }
 
-        
+
 
         // POST: TiposUsuario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -112,7 +112,7 @@ namespace SGE.Controllers
             }
             return View(tipoUsuario);
         }
-    
+
 
 
         // GET: TiposUsuario/Edit/5
@@ -161,9 +161,9 @@ namespace SGE.Controllers
             if (ModelState.IsValid)
             {
                 TipoUsuario tipoUsuarioAntigo = _context.TiposUsuario.Where(a => a.TipoUsuarioId == tipoUsuario.TipoUsuarioId).FirstOrDefault();
-                if (tipoUsuarioAntigo.Tipo == "Administrador" || tipoUsuarioAntigo.Tipo == "Aluno")
+                if (tipoUsuarioAntigo.Tipo == "Administrador" || tipoUsuarioAntigo.Tipo == "Aluno" || tipoUsuarioAntigo.Tipo == "Professor")
                 {
-                    ViewData["Erro"] = "Os tipos de usuários ADMINISTRADOR e ALUNO não podem ser alterados!";
+                    ViewData["Erro"] = "Os tipos de usuários ADMINISTRADOR, ALUNO e PROFESSOR não podem ser alterados!";
                     return View(tipoUsuario);
                 }
 

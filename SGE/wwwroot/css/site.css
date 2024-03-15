@@ -23,6 +23,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+.container {
+    margin-bottom: 5em;
+}
+
 .cardLogin {
     margin-top: 3em;
     display: flex;
@@ -82,14 +86,19 @@ body {
 #rodape {
     /*background-color: #F6D524;*/
     /*background-color: white;*/
-    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    bottom: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 4em;
-    margin-top: 2em;
 }
+
+    #rodape div {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-top: 1px solid #A2A2A2;
+        height: 3em;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
 
 .navBar {
     margin: 0em 3.7em;

@@ -119,6 +119,7 @@ function criarEvento() {
                 var ano = document.getElementById('year').value;
                 var data = dia + '/' + mes + '/' + ano;
                 alert('Data selecionada: ' + data);
+                window.location.href("/ReservaSala/NovaReserva")
             }
         });
     }

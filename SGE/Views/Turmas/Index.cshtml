@@ -126,53 +126,7 @@
         <div style="width:50%;">
             <h3 style="font-size:1rem; color:#fff;">Adicionar Alunos:</h3>
             <div>
-                <table class="tabelaAluno">
-                    <thead style="background: rgba(255, 255, 255, 0.32);border-radius: 5px;">
-                            <tr>
-                        @foreach (var model in Alunos)
-                        {
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AlunoNome);
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Matricula)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.CadAtivo)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.CadInativo)
-                                </th>
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                                @foreach (var item in Alunos)
-                                {
-                                <tr>
-                                    <td>
-                                            @Html.DisplayFor(model => item.AlunoNome)
-                                    </td>
-                                    <td>
-                                            @Html.DisplayFor(modelItem => item.Matricula)
-                                    </td>
-                                    <td>
-                                            @Html.DisplayFor(modelItem => item.CadAtivo)
-                                    </td>
-                                    <td>
-                                            @Html.DisplayFor(modelItem => item.CadInativo)
-                                    </td>
-                                    }
-                                    <td>
-                                        <a class="text-dark" asp-action="Edit" asp-route-id="@item.AlunoId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
-                                        <a class="text-dark" asp-action="Details" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
-                                        <a class="text-dark" asp-action="Delete" asp-route-id="@item.AlunoId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
-                                    </td>
-                                </tr>
-                                }
-                        </tbody>
-                    </table>
-
+               Tabela
                 </div>
             </div>
         </div>

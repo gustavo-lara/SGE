@@ -30,43 +30,47 @@
 					<svg bootstrap-icon="PlusSquare" width="40" height="40" aria-label="Pesquisar" style="color:#fff"></svg>
 				</button>
 			</div>
-			<div style="width:60%;">
-				Barra de Pesquisa
+			<div style="width:60%; display:flex">
+				<div>
+					<h3 style="color:white; margin-left:0.5em;">|</h3>
+				</div>
+				<div>
+					<input style="width:44em; margin-left:3em; height: 2.5em; background:none; border: 1px solid white; border-radius:15px; padding:0px 10px; color:white;" type="search" placeholder="Pesquisar turma" />
+				</div>
 			</div>
 		</div>
 		<div style="width:100%;">
-			<table class="table">
+			<table style="height:230px" class="table-borderless tabela1">
 				<thead>
-					<tr>
-						<th>
+					<tr style="padding:0.3em">
+						<th style="padding:0.2em">
 							@Html.DisplayNameFor(model => model.Sala.SalaNome)
 						</th>
-						<th>
+						<th style="padding:0em">
 							@Html.DisplayNameFor(model => model.CadAtivo)
 						</th>
-						<th>
+						<th style="padding:0em">
 							@Html.DisplayNameFor(model => model.CadInativo)
 						</th>
-						<th></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="table-bordered">
 					@foreach (var item in Model)
 					{
-						<tr>
-							<td>
+						<tr style="padding:0.1em">
+							<td style="padding:0.3em">
 								@Html.DisplayFor(modelItem => item.Sala.SalaNome)
 							</td>
-							<td>
+							<td style="padding:0.1em">
 								@Html.DisplayFor(modelItem => item.CadAtivo)
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.CadInativo)
 							</td>
-							<td>
-								<a class="text-dark" asp-action="Edit" asp-route-id="@item.SalaId"><svg bootstrap-icon="PencilSquare" width="19" height="19" aria-label=""></svg></a>
-								<a class="text-dark" asp-action="Details" asp-route-id="@item.SalaId"><svg bootstrap-icon="Info" width="19" height="19" aria-label=""></svg></a>
-								<a class="text-dark" asp-action="Delete" asp-route-id="@item.SalaId"><svg bootstrap-icon="Trash" width="19" height="19" aria-label=""></svg></a>
+							<td style="padding:0.2em">
+								<a style="padding:0.2em" class="text-dark" asp-controller="Salas" asp-action="Edit" asp-route-id="@item.SalaId"><svg bootstrap-icon="PencilSquare" width="26" height="26" aria-label=""></svg></a>
+								<a style="padding:0.2em" class="text-dark" asp-controller="Salas" asp-action="Details" asp-route-id="@item.SalaId"><svg bootstrap-icon="Info" width="26" height="26" aria-label=""></svg></a>
+								<a style="padding:0.2em" class="text-dark" asp-controller="Salas" asp-action="Delete" asp-route-id="@item.SalaId"><svg bootstrap-icon="Trash" width="26" height="26" aria-label=""></svg></a>
 							</td>
 						</tr>
 					}
@@ -78,10 +82,10 @@
 
 <div class="container">
 
-	<h1 class="text-center">Reservas de Salas</h1>
-	<p>
-		<a asp-controller="Salas" asp-action="Create">Criar Sala</a>
-	</p>
+	<h1 class="text-center" style="color:white">Reservas de Salas</h1>
+	@* 	<p>
+	<a asp-controller="Salas" asp-action="Create">Criar Sala</a>
+	</p> *@
 
 
 	@if (ViewData["Erro"] != null)
@@ -100,9 +104,9 @@
 				<div class="input-group mb-1">
 					<input type="text" class="form-control" name="filtro"
 						   placeholder="Pesquisar por Sala" aria-label="Pesquisar por Sala"
-						   aria-describedby="button-addon2">
-					<button class="btn btn-dark" type="submit" id="button-addon2">
-						<svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar"></svg>
+						   aria-describedby="button-addon2" style="background: rgba(255, 255, 255, 0.3);  border: 2px solid white">
+					<button class="btn btn-light" type="submit" id="button-addon2">
+						<svg bootstrap-icon="Search" width="16" height="16" aria-label="Pesquisar" ;"></svg>
 					</button>
 				</div>
 			</form>
@@ -111,26 +115,26 @@
 
 	<div class="row">
 		<div class="col-12 h-25 overflow-auto">
-			<table class="table table-sm">
+			<table class="table-borderless tabela1">
 				<thead>
-					<tr>
-						<th>
+					<tr style="padding:0.3em">
+						<th style="padding:0.3em">
 							Nome da Sala
 						</th>
-						<th class="text-end">
+						<th class="text-end" style="padding:0em 1.4em">
 							Selecionar
 						</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="table-bordered">
 					@foreach (var item in ListaSalas)
 					{
-						<tr>
-							<td>
+						<tr style="padding:0.3em">
+							<td style="padding:0.3em">
 								@item.SalaNome
 							</td>
-							<td class="text-end">
-								<a asp-action="SelecionaSala" asp-route-id="@item.SalaId" class="btn btn-primary">Selecionar</a>
+							<td style="padding:0.7em" class="text-end">
+								<a asp-action="SelecionaSala" asp-route-id="@item.SalaId" class="btn btn-outline-light" style="font-weight:700; border: 1.7px solid white">Selecionar</a>
 							</td>
 						</tr>
 					}
@@ -143,12 +147,12 @@
 
 			@if (ViewData["SalaSelecionada"] != null)
 			{
-				<div class="d-flex justify-content-between" style="width:100%;">
+				<div class="d-flex justify-content-between" style="width:100%; padding:4em 0em 0em 0em">
 					<div class="d-flex justify-content-start" style="width:70%;">
 						<h2 style="font-size:2rem; color:#fff;">Reservas da Sala:</h2>
-						<p style="background:none; border: none; border-bottom: 1px solid #fff; color: gray; width:40%" class="ms-3">@ViewData["SalaSelecionada"]</p>
+						<p style="background:none; border: none; border-bottom: 1px solid #fff; color: dimgray; font-weight:700; width:40%; margin-top:0.7em" class="ms-4">@ViewData["SalaSelecionada"]</p>
 					</div>
-					<a asp-action="NovaReserva" asp-route-id="@ViewData["IdSalaSelecionada"]" class="btn botaoBranco2" style="width:20%;">Nova Reserva</a>
+					<a asp-action="NovaReserva" asp-route-id="@ViewData["IdSalaSelecionada"]" class="btn btn-outline-light" style="width:22em; padding:0.5em 0em;font-weight:700; border: 2px solid white">Nova Reserva</a>
 				</div>
 			}
 		</div>

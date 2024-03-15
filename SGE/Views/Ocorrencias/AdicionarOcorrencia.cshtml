@@ -19,43 +19,41 @@
 
 <div>
     <div>
-        <form asp-action="AdicionarOcorrencia" class="d-flex flex-row row justify-content-between align-items-center" style="width:100%;">
+        <form asp-action="AdicionarOcorrencia" class="d-flex flex-row row justify-content-between align-items-end" style="width:100%;">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-3 my-2">
-                <label asp-for="TipoOcorrenciaId" class="textoBrancoForm"></label>
-                <select asp-for="TipoOcorrenciaId" class="headerTabela textoHeaderTabela" asp-items="ViewBag.TipoOcorrenciaId"></select>
-            </div>
-            <div class="col-3 my-2">
-                <label for="UsuarioNome" class="textoBrancoForm"></label>
-                <input for="UsuarioNome" name="UsuarioNome" id="UsuarioNome" class="headerTabela textoHeaderTabela" readonly value="@ViewData["usuarioNome"]"></input>
-            </div>
-            <div class="col-3 my-2">
-                <label asp-for="DataOcorrencia" class="textoBrancoForm"></label>
-                <input asp-for="DataOcorrencia" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" class="headerTabela textoHeaderTabela" />
-                <span asp-validation-for="DataOcorrencia" class="text-danger"></span>
-            </div>
-            <div class="col-3 my-2">
+            <div class="col-4 my-2">
                 <label for="AlunoNome" class="textoBrancoForm">Nome do Aluno</label>
                 <input for="AlunoNome" name="AlunoNome" id="AlunoNome" class="headerTabela textoHeaderTabela" value="@ViewData["alunoNome"]" readonly />
             </div>
             <div class="col-4 my-2">
+                <label asp-for="TipoOcorrenciaId" class="textoBrancoForm"></label>
+                <select asp-for="TipoOcorrenciaId" class="headerTabela textoHeaderTabela" asp-items="ViewBag.TipoOcorrenciaId"></select>
+            </div>
+            <div class="col-4 my-2">
+                <label asp-for="DataOcorrencia" class="textoBrancoForm"></label>
+                <input asp-for="DataOcorrencia" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" class="headerTabela textoHeaderTabela" />
+                <span asp-validation-for="DataOcorrencia" class="text-danger"></span>
+            </div>
+            <div class="col-4 my-2">
+                <label asp-for="Descricao" class="textoBrancoForm"></label>
                 <input asp-for="Descricao" class="headerTabela textoHeaderTabela" placeholder="Adicione a descrição"/>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="col-4 my-2">
+                <label asp-for="Tratativa" class="textoBrancoForm"></label>
                 <input asp-for="Tratativa" class="headerTabela textoHeaderTabela" placeholder="Adicione a tratativa" />
                 <span asp-validation-for="Tratativa" class="text-danger"></span>
             </div>
-            <div class="col-1 my-2 textoBrancoForm">
-                <input asp-for="CadAtivo" checked="checked" type="hidden" /> @Html.DisplayNameFor(model => model.CadAtivo)
-            </div>
-            <div class="col-1 my-2 textoBrancoForm">
-                <input asp-for="Finalizado" type="hidden" /> @Html.DisplayNameFor(model => model.Finalizado)
+            <div class="col-2 my-2 textoBrancoForm">
+                <input asp-for="CadAtivo" checked="checked" /> @Html.DisplayNameFor(model => model.CadAtivo)
             </div>
             <div class="col-2 my-2">
                 <input type="submit" value="Adicionar" class="btn botaoBranco2" style="width:100%;"/>
             </div>
-
+            <div>
+                <label for="UsuarioNome" class="textoBrancoForm"></label>
+                <input for="UsuarioNome" name="UsuarioNome" id="UsuarioNome" class="headerTabela textoHeaderTabela" readonly type="hidden" value="@ViewData["usuarioNome"]"></input>
+            </div>
             <div>
                 <input asp-for="UsuarioId" type="hidden" class="" value="@ViewData["usuarioId"]" />
             </div>
@@ -67,6 +65,9 @@
             </div>
             <div>
                 <input asp-for="DataFinalizado" class="form-control" type="hidden" />
+            </div>
+            <div>
+                <input asp-for="Finalizado" type="hidden" /> @*@Html.DisplayNameFor(model => model.Finalizado)*@
             </div>
         </form>
     </div>

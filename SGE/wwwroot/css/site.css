@@ -84,9 +84,9 @@ body {
     /*background-color: white;*/
     background-color: rgba(255, 255, 255, 0.3);
     width: 100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 4em;
     margin-top: 2em;
 }
@@ -127,31 +127,28 @@ body {
     border: 4px solid #fff;
     border-radius: 20px;
     background: none;
-    
     color: #fff;
     text-align: center;
-
     align-items: center;
 }
 
-    .buttonAzul:hover {
-        background: #fff;
-        color: #2E75D3;
-    }
+.buttonAzul:hover {
+    background: #fff;
+    color: #2E75D3;
+}
 
 /*Create Usuários*/
 
-.styleCreateUsuarios{
-    
+.styleCreateUsuarios {
 }
 
 
 /*Alunos*/
-.tableAlunosTop{
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    width:100%;
+.tableAlunosTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
     color: white;
     margin: 2em 0em;
 }
@@ -181,18 +178,18 @@ body {
 .tabelaAluno {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    padding:1em;
-    width:100%;
+    padding: 1em;
+    width: 100%;
 }
 
-.tabelaAluno th{
-    gap: 1em;
-    padding:0.5em;
-}
+    .tabelaAluno th {
+        gap: 1em;
+        padding: 0.5em;
+    }
 
-.tabelaAluno td{
-    padding: 0.5em;
-}
+    .tabelaAluno td {
+        padding: 0.5em;
+    }
 
 
 /*Página Home*/
@@ -263,24 +260,22 @@ body {
     color: black;
 }
 
-.headerTabela{
+.headerTabela {
     background: rgba(255, 255, 255, 0.7);
-    border:none;
+    border: none;
     border-radius: 5px;
-
     width: 100%;
-    height:fit-content;
+    height: fit-content;
     padding: 0.7em 0;
 }
 
-.textoHeaderTabela{
+.textoHeaderTabela {
     padding-left: 1em;
     padding-right: 1em;
-
-    text-transform:capitalize;
+    text-transform: capitalize;
 }
 
-.textoBrancoForm{
+.textoBrancoForm {
     color: #fff;
 }
 
